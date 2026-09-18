@@ -1,0 +1,2552 @@
+# THE MASTERY DR
+
+## Full Personal Brand Website + Learning Management Platform
+
+### Product, UX, UI, Architecture & Development Specification
+
+You are building a production-quality website and digital platform for the personal brand **"The Mastery Dr."**
+
+This is NOT a simple portfolio website.
+
+It is a complete personal-brand ecosystem combining:
+
+1. A premium personal brand website
+2. A speaking/invitation platform
+3. A reviews/testimonials platform
+4. The Bereans reading community
+5. Gain Mastery Institute LMS
+6. Student authentication and dashboards
+7. Paystack payments
+8. Course management
+9. Assignments and assessments
+10. Certificates
+11. Multiple instructor support
+12. A comprehensive admin dashboard
+13. Analytics
+14. Email notifications
+15. SEO
+16. A scalable Neon PostgreSQL backend
+
+The final product must feel like a serious global personal-development and education brand.
+
+Do NOT create a generic "AI-generated personal portfolio website."
+
+Do NOT use generic SaaS dashboard templates without adapting them to the brand.
+
+Do NOT make every section look like cards floating on gradients.
+
+The website should feel deliberately designed by a world-class digital product/design team.
+
+---
+
+# 1. BRAND
+
+## Brand name
+
+**The Mastery Dr**
+
+## Professional identity
+
+**Head Growth Coach, Gain Mastery Institute**
+
+## Core brand idea
+
+The Mastery Dr exists to help people move from ignorance, stagnation and lack of direction toward clarity, consistent growth and purposeful impact.
+
+The vision is:
+
+> **To raise a generation of growth- and purpose-inclined minds, people who will not just live life to make a living but also to make impact.**
+
+## Long-term ambition
+
+Build The Mastery Dr into a global household name associated with clarity, direction, personal growth and purpose.
+
+The brand should communicate:
+
+* Authority
+* Inspiration
+* Depth
+* Growth
+* Purpose
+* Excellence
+* Faith
+* Practical transformation
+* Intellectual curiosity
+
+## Brand philosophy
+
+**Gain Mastery**
+
+Meaning:
+
+> **Growth. Consistent Growth.**
+
+## Personal philosophy
+
+> **"No one is empty, everyman is designed for something great, that greatness just needs to find expression."**
+
+## Origin story
+
+The Mastery Dr was birthed from a deep personal detest for ignorance, stagnation and a life without direction.
+
+The founder believes that God has placed within every person the capacity for something meaningful and great, and his calling is to help people come out of ignorance, find direction and grow into the people they were designed to become.
+
+Use this as source material for the About page, but write the final copy naturally and powerfully rather than making it sound like AI-generated motivational content.
+
+---
+
+# 2. TARGET AUDIENCE
+
+The audience is broad but centered around people who are intentionally pursuing growth.
+
+Potential audiences include:
+
+* Young adults
+* Students
+* Professionals
+* Entrepreneurs
+* Leaders
+* Faith communities
+* People seeking clarity
+* People trying to discover purpose
+* People interested in personal development
+* People interested in financial growth
+* People interested in spiritual development
+* Organizations looking for speakers
+* People looking for structured learning
+
+The website should be accessible to a global audience while retaining a Nigerian/African authenticity.
+
+---
+
+# 3. BRAND POSITIONING
+
+The Mastery Dr should not look like:
+
+* A generic life coach website
+* A motivational speaker website
+* A church website
+* A generic online-course marketplace
+* A financial trading website
+* A corporate consultancy website
+
+It is a **personal brand + educational ecosystem + faith-informed growth platform.**
+
+Faith should be visible but balanced.
+
+Do not make every section explicitly religious.
+
+The brand should be welcoming to people interested in personal growth while making the founder's Christian worldview clear and authentic.
+
+---
+
+# 4. THE SIX DIMENSIONS OF MASTERY
+
+The official framework of The Mastery Dr consists of:
+
+1. **Purpose**
+2. **Personal Growth**
+3. **Financial Growth**
+4. **Leadership**
+5. **Spiritual Growth**
+6. **Strategy**
+
+These six dimensions should become an important recurring visual/content framework throughout the website.
+
+They should NOT simply appear as six generic cards.
+
+Create a distinctive visual presentation for them.
+
+They should feel like a proprietary intellectual framework belonging to The Mastery Dr.
+
+---
+
+# 5. VISUAL DIRECTION
+
+## Overall aesthetic
+
+**Premium Dark Luxury**
+
+The website should feel:
+
+* Cinematic
+* Sophisticated
+* Editorial
+* Premium
+* Intelligent
+* Modern
+* Masculine without becoming aggressive
+* Inspirational
+* Refined
+
+## Theme
+
+**Dark mode only.**
+
+Do not build a light mode.
+
+## Color palette
+
+Create a new custom brand palette.
+
+Explore:
+
+* Deep black
+* Charcoal
+* Graphite
+* Refined warm gold / metallic gold
+* Carefully selected neutral supporting tones
+
+Do not make the website look like "black + bright yellow."
+
+Gold should be used intentionally for emphasis, borders, highlights, active states and important calls to action.
+
+Prioritize accessibility and contrast.
+
+## Typography
+
+Use a sophisticated editorial typography system.
+
+Use:
+
+* A distinctive display font for major headlines
+* A highly readable modern sans-serif for body copy/UI
+
+Typography should do significant visual work.
+
+Avoid excessive font variety.
+
+## Photography
+
+The founder currently has professional photoshoots.
+
+Use those as the primary photography source.
+
+Do not invent fake personal photographs.
+
+Design the site around high-quality portrait photography.
+
+Photography should feel cinematic and editorial.
+
+---
+
+# 6. HOMEPAGE
+
+The homepage is the most important page.
+
+The selected direction is:
+
+## "The Authority"
+
+The visitor should immediately understand:
+
+* Who The Mastery Dr is
+* What he does
+* What he believes
+* Why they should care
+* Where they can go next
+
+The homepage should create **inspiration + authority** within seconds.
+
+---
+
+## HERO
+
+Create a cinematic hero section centered around a professional portrait of The Mastery Dr.
+
+Potential messaging direction:
+
+**THE MASTERY DR**
+
+**Helping people find clarity, discover purpose and grow into who they were designed to become.**
+
+Then introduce:
+
+**Gain Mastery.**
+
+Do NOT blindly use this exact copy if better copy can be developed.
+
+The hero should feel premium rather than crowded.
+
+Primary CTA:
+
+**Explore The Mastery Dr**
+
+Secondary CTA:
+
+**Invite Me to Speak**
+
+Potential tertiary interaction:
+
+**Explore Gain Mastery Institute**
+
+Use elegant animation.
+
+Avoid excessive effects.
+
+---
+
+# 7. HOMEPAGE SECTIONS
+
+The homepage should include carefully designed sections such as:
+
+### Hero
+
+### Introduction
+
+Briefly explain who The Mastery Dr is.
+
+### The Philosophy
+
+Introduce:
+
+**Gain Mastery = Growth. Consistent Growth.**
+
+### Six Dimensions of Mastery
+
+Purpose
+Personal Growth
+Financial Growth
+Leadership
+Spiritual Growth
+Strategy
+
+### About The Mastery Dr
+
+Short biography with professional portrait.
+
+CTA:
+
+**Discover My Story**
+
+### Gain Mastery Institute
+
+Introduce the LMS.
+
+Show selected courses.
+
+CTA:
+
+**Explore the Institute**
+
+### Speaking
+
+Position The Mastery Dr as available for:
+
+* Conferences
+* Churches
+* Universities
+* Schools
+* Corporate events
+* Youth programs
+* Leadership programs
+* Podcasts
+* Panels
+* Workshops
+* Seminars
+
+CTA:
+
+**Invite Me to Speak**
+
+### The Bereans
+
+Introduce the reading community.
+
+Explain that it exists to help determined people cultivate the habit of reading and improve their lives.
+
+CTA:
+
+**Join The Bereans**
+
+### Featured Testimonials
+
+Show selected approved reviews.
+
+### Content / Resources
+
+Show manually curated:
+
+* Articles
+* Videos
+* Podcasts
+* Resources
+
+### Telegram Community
+
+Introduce:
+
+**The Mastery Masterminds**
+
+with a link to the Telegram community.
+
+### Newsletter
+
+Invite visitors to subscribe.
+
+### Footer
+
+Include:
+
+* Navigation
+* Social media
+* Email
+* Legal pages
+* Newsletter
+* Copyright
+* Gain Mastery branding
+
+---
+
+# 8. ABOUT PAGE
+
+Create a sophisticated long-form About page.
+
+It should include:
+
+* Hero introduction
+* Personal story
+* Calling
+* Philosophy
+* Vision
+* Mission
+* Six dimensions of mastery
+* Professional identity
+* Experience
+* Achievements
+* Areas of expertise
+* Faith
+* Initiatives
+* CTA
+
+Use storytelling rather than a boring chronological CV.
+
+Do not expose private family matters or sensitive personal information.
+
+Do not publish personal financial information.
+
+---
+
+# 9. SPEAKING PAGE
+
+Create a dedicated professional speaking page.
+
+Position The Mastery Dr for:
+
+* Conferences
+* Churches
+* Universities
+* Secondary schools
+* Corporate events
+* Youth programs
+* Leadership programs
+* Podcasts
+* Panels
+* Workshops
+* Seminars
+
+Possible topics can be derived from the six dimensions of mastery.
+
+Include:
+
+* Speaking introduction
+* Topics
+* Audience types
+* Speaking philosophy
+* Professional photographs
+* Testimonials
+* CTA
+
+CTA:
+
+**Invite The Mastery Dr to Speak**
+
+---
+
+# 10. SPEAKING INVITATION SYSTEM
+
+Create a dedicated application form.
+
+Fields should include:
+
+* Full name
+* Organization
+* Email
+* Phone number
+* Event name
+* Event type
+* Event date
+* Event location
+* Physical/virtual
+* Expected audience size
+* Audience demographic
+* Proposed topic
+* Event theme
+* What they want The Mastery Dr to speak about
+* Expected duration
+* Budget/honorarium range
+* Accommodation/travel information
+* Organization website/social media
+* Additional information
+* Optional invitation letter/event brief upload
+
+Invitation letter upload should be optional.
+
+Upon submission:
+
+1. Validate form
+2. Store application in Neon
+3. Generate unique application ID
+4. Send notification email to admin
+5. Send confirmation email to applicant
+6. Display success state
+7. Add application to admin dashboard
+
+Admin should be able to:
+
+* View
+* Filter
+* Search
+* Update status
+* Add internal notes
+* Contact applicant
+* Archive application
+
+Suggested statuses:
+
+* New
+* Reviewing
+* Contacted
+* Accepted
+* Declined
+* Completed
+* Archived
+
+---
+
+# 11. THE BEREANS
+
+The Bereans is a reading community.
+
+Mission:
+
+> Help people who are determined to read and improve their lives cultivate the habit of reading.
+
+Anyone can apply, but applicants are screened.
+
+Reading areas include:
+
+* Personal development
+* Finance
+* Personal growth
+* Faith
+* Leadership
+* Other intellectually useful subjects
+
+Meetings are currently virtual.
+
+Membership is currently free.
+
+---
+
+# 12. BEREANS MEMBERSHIP SYSTEM
+
+Users should:
+
+1. Discover The Bereans
+2. Apply
+3. Complete screening/application
+4. Create account
+5. Wait for approval
+6. Receive approval/rejection email
+7. Access Bereans dashboard if approved
+
+Do NOT allow unrestricted anonymous membership.
+
+Reviews do NOT require an account.
+
+But Bereans membership DOES require an account.
+
+---
+
+# 13. BEREANS DASHBOARD
+
+Approved members should have a dedicated dashboard.
+
+Include:
+
+* Current book
+* Reading schedule
+* Meeting dates
+* Meeting links
+* Discussion questions
+* Reading progress
+* Previous books
+* Resources
+* Announcements
+* Book ratings/reviews
+* Completion status
+
+Architect the system so paid membership can be introduced in the future without rebuilding the entire platform.
+
+Do not implement paid membership now.
+
+---
+
+# 14. GAIN MASTERY INSTITUTE
+
+This is the official LMS.
+
+It should feel like a premium learning environment rather than a generic WordPress LMS.
+
+Brand:
+
+**Gain Mastery Institute**
+
+Potential positioning:
+
+**Learn. Grow. Master.**
+
+Courses can cover:
+
+* Personal development
+* Purpose
+* Spiritual growth
+* Leadership
+* Financial literacy
+* Trading
+* Career development
+* Relationships
+* Productivity
+* Other growth-related subjects
+
+There should be:
+
+* Free courses
+* Paid courses
+
+---
+
+# 15. COURSE MARKETPLACE
+
+Create a professional course catalog.
+
+Features:
+
+* Course search
+* Categories
+* Filters
+* Featured courses
+* Free/paid indicator
+* Course level
+* Instructor
+* Course duration
+* Student count
+* Ratings
+* Course reviews
+
+Each course needs a professional landing page.
+
+---
+
+# 16. COURSE PAGE
+
+A course page should include:
+
+* Course title
+* Description
+* Instructor
+* Category
+* Level
+* Duration
+* Learning outcomes
+* Curriculum
+* Modules
+* Lessons
+* Course materials
+* Assignment information
+* Assessment information
+* Certificate information
+* Reviews
+* Price
+* Discount/coupon functionality
+* Enrollment CTA
+
+For paid courses:
+
+**Enroll Now**
+
+should initiate the account/payment flow.
+
+---
+
+# 17. COURSE PURCHASE FLOW
+
+Required flow:
+
+### Visitor
+
+Selects a course.
+
+↓
+
+### Account
+
+If not authenticated:
+
+**Create Account / Login**
+
+↓
+
+### Email Verification
+
+User verifies email.
+
+↓
+
+### Checkout
+
+Course price is displayed.
+
+Coupon can be entered.
+
+↓
+
+### Paystack
+
+Payment initiated through Paystack.
+
+↓
+
+### Server-side verification
+
+NEVER unlock a course based only on a client-side success message.
+
+The server must verify the transaction with Paystack.
+
+↓
+
+### Successful verification
+
+Create transaction record.
+
+↓
+
+Create enrollment.
+
+↓
+
+Unlock course.
+
+↓
+
+Send confirmation email.
+
+↓
+
+Student redirected to course/student dashboard.
+
+---
+
+# 18. PAYSTACK
+
+Paystack is the payment provider.
+
+Use secure server-side integration.
+
+Never expose secret keys in frontend code.
+
+Use environment variables.
+
+Implement:
+
+* Payment initialization
+* Transaction reference
+* Server-side verification
+* Webhook handling
+* Idempotency
+* Failed payments
+* Cancelled payments
+* Duplicate webhook protection
+* Transaction records
+* Receipts
+
+Primary currency should support Nigerian Naira while architecting the payment layer for international expansion where supported.
+
+Refunds are handled manually through Paystack/admin processes.
+
+---
+
+# 19. COUPONS
+
+Implement coupon functionality.
+
+Admin should be able to create:
+
+* Percentage discounts
+* Fixed discounts
+* Start/end dates
+* Usage limits
+* Course-specific coupons
+* Global coupons
+* Active/inactive state
+
+Prevent:
+
+* Expired coupons
+* Overused coupons
+* Unauthorized coupon manipulation
+
+---
+
+# 20. AFFILIATE SYSTEM
+
+Architect and implement an affiliate/referral system.
+
+Potential functionality:
+
+* Unique referral links
+* Referral tracking
+* Attribution
+* Conversion tracking
+* Commission calculation
+* Affiliate dashboard
+* Admin management
+
+Design this so the commission rules can evolve.
+
+---
+
+# 21. LMS LESSONS
+
+Lessons can include:
+
+* Video
+* Audio
+* Text
+* PDFs
+* Documents
+* Images
+* External resources
+* Embedded YouTube videos
+* Embedded Vimeo videos
+
+Videos should generally be hosted externally rather than stored directly in Neon.
+
+Support YouTube and Vimeo primarily.
+
+---
+
+# 22. STUDENT DASHBOARD
+
+Create a polished student dashboard.
+
+Example structure:
+
+**Welcome back, [Name]**
+
+Continue Learning
+
+Course cards showing:
+
+* Course name
+* Instructor
+* Progress %
+* Continue button
+
+Other sections:
+
+* Pending assignments
+* Recent activity
+* Completed courses
+* Certificates
+* Reviews
+* Payments
+* Profile
+
+---
+
+# 23. STUDENT PROFILE
+
+Collect:
+
+* Full name
+* Profile image
+* Email
+* Phone number
+* Country
+* Courses
+* Completed courses
+* Certificates
+* Progress
+* Assignment history
+
+Do not collect unnecessary personal information.
+
+---
+
+# 24. ASSIGNMENTS
+
+Assignments must support:
+
+* Text answers
+* PDF
+* Word documents
+* Images
+* Video
+* Audio
+* Multiple file types
+
+Workflow:
+
+Lesson
+
+→ Assignment
+
+→ Submission
+
+→ Instructor review
+
+→ Grade/feedback
+
+→ Student notification
+
+→ Student continues
+
+Students should be able to see:
+
+* Submitted date
+* Status
+* Grade
+* Instructor feedback
+
+---
+
+# 25. QUIZZES
+
+Support:
+
+* Multiple choice
+* True/false
+* Short answer
+* Mixed question types
+
+Where possible, objective questions should be automatically graded.
+
+Support:
+
+* Passing score
+* Attempts
+* Time limits where required
+* Feedback
+* Results
+
+---
+
+# 26. CERTIFICATES
+
+Support certificates after course completion.
+
+Certificate can contain:
+
+* Student name
+* Course name
+* Completion date
+* Certificate ID
+* Gain Mastery Institute branding
+* The Mastery Dr branding
+* Signature
+* Verification URL
+* QR code
+
+Create a public certificate verification page.
+
+Example:
+
+`/verify/certificate/[certificate-id]`
+
+---
+
+# 27. COURSE ACCESS
+
+Access duration is controlled per course by the instructor/admin.
+
+Possible values:
+
+* Lifetime
+* Number of days
+* Number of months
+* Specific expiration date
+
+Students retain access according to the course configuration.
+
+Do not automatically revoke access simply because a student hasn't completed the course.
+
+---
+
+# 28. PRIVATE MESSAGING
+
+Students should be able to communicate privately with instructors.
+
+Design a secure messaging system.
+
+Support:
+
+* Student → instructor
+* Instructor → student
+* Conversation history
+* Read/unread state
+* Notifications
+* Admin oversight where appropriate for platform safety
+
+Architect for multiple instructors.
+
+---
+
+# 29. MULTIPLE INSTRUCTORS
+
+The system must support multiple instructors in the future.
+
+Courses should be associated with one or more instructors.
+
+Instructors should only have access to permitted functionality.
+
+Do not hard-code the platform around Moses being the only instructor.
+
+---
+
+# 30. COURSE REVIEWS
+
+Students can review courses.
+
+Reviews should support:
+
+* Rating
+* Written review
+* Student name
+* Course
+* Date
+* Approval status
+
+Reviews should not automatically become public.
+
+Admin moderation is required.
+
+---
+
+# 31. GENERAL REVIEWS SYSTEM
+
+Create a review system covering different areas.
+
+Categories:
+
+* The Mastery Dr
+* Gain Mastery Institute
+* The Bereans
+* Courses
+* Speaking/Events
+* Personal Development
+* Other
+
+Anonymous reviews should be allowed.
+
+However, require sufficient metadata internally to prevent abuse/spam.
+
+Reviewers do NOT need an account.
+
+Reviews require admin approval before publication.
+
+Admin can:
+
+* Approve
+* Reject
+* Edit/moderate
+* Feature
+* Unfeature
+* Archive
+
+Featured reviews can appear on the homepage.
+
+---
+
+# 32. RESOURCES / CONTENT
+
+Create a content platform supporting:
+
+* Articles
+* YouTube videos
+* Podcasts
+* Short-form content
+* Downloadable resources
+* PDFs
+* Quotes
+* Other educational resources
+
+Content categories:
+
+* Growth
+* Purpose
+* Faith
+* Finance
+* Leadership
+* Books
+* Relationships
+* Career
+* Trading
+* Personal reflections
+
+Admin should manually curate content.
+
+Do NOT automatically import every social media post.
+
+---
+
+# 33. CONTENT MANAGEMENT
+
+The admin dashboard must allow publishing without editing code.
+
+Admin should be able to:
+
+* Create
+* Edit
+* Publish
+* Schedule
+* Unpublish
+* Archive
+
+content.
+
+Support:
+
+* Featured image
+* Video embed
+* Audio
+* PDF
+* Related content
+* Social sharing
+* SEO metadata
+
+---
+
+# 34. SEARCH
+
+Create site-wide search.
+
+Search should be able to discover relevant:
+
+* Articles
+* Courses
+* Resources
+* Books
+* Content
+* Possibly instructors
+
+Make search fast and intuitive.
+
+---
+
+# 35. SOCIAL MEDIA
+
+Official social handles:
+
+Instagram: **@themasterydr**
+
+TikTok: **@themasterydr**
+
+Facebook: **@themasterydr**
+
+Telegram community:
+
+**The Mastery Masterminds**
+
+Use:
+
+`https://t.me/masterymasterminds`
+
+Social links should appear naturally throughout the website without overwhelming the design.
+
+---
+
+# 36. NEWSLETTER
+
+Implement newsletter subscription.
+
+Use cases:
+
+* Growth insights
+* Purpose teachings
+* Course announcements
+* Book club updates
+* Speaking/event updates
+* New resources
+
+Newsletter forms should appear at appropriate conversion points.
+
+Do not make the site feel like every section is asking for an email.
+
+---
+
+# 37. COACHING / ONE-ON-ONE
+
+Do NOT create direct appointment/payment booking.
+
+Instead create an inquiry pathway.
+
+Users can express interest in:
+
+* Personal growth coaching
+* Clarity
+* Purpose
+* Mentorship
+* Consultation
+
+The user submits an inquiry.
+
+Admin receives notification.
+
+Admin manages inquiry manually.
+
+---
+
+# 38. CONTACT PAGE
+
+Contact page should be simple and premium.
+
+Include:
+
+* Contact form
+* Email
+* Social media
+
+Do not add WhatsApp integration.
+
+---
+
+# 39. EMAIL SYSTEM
+
+Implement automated transactional emails.
+
+Required emails:
+
+* Account creation
+* Email verification
+* Password reset
+* Payment confirmation
+* Course enrollment
+* Course access
+* Failed payment where appropriate
+* Assignment submission
+* Assignment grading
+* Course completion
+* Certificate issuance
+* Speaking request confirmation
+* Speaking request notification
+* Bereans application
+* Bereans approval
+* Bereans rejection
+* Review submission confirmation
+* Newsletter confirmation
+* Important platform notifications
+
+Use reusable branded email templates.
+
+---
+
+# 40. ADMIN DASHBOARD
+
+Build a serious admin dashboard.
+
+Do not use an ugly generic admin template.
+
+Dashboard overview:
+
+**Good morning, Moses**
+
+Display:
+
+* Total revenue
+* Students
+* New enrollments
+* Active students
+* Course completion
+* Speaking requests
+* Bereans members
+* Pending reviews
+* Newsletter subscribers
+* Recent activity
+
+Charts and analytics should be useful rather than decorative.
+
+---
+
+# 41. ADMIN ROLES
+
+Support role-based permissions.
+
+At minimum:
+
+### Super Admin
+
+Full control.
+
+### Instructor
+
+Manage assigned courses, lessons, assignments and students relevant to those courses.
+
+### Content Manager
+
+Manage articles, resources, videos and content.
+
+### Support/Admin
+
+Manage students, inquiries and operational tasks without access to sensitive financial/platform settings.
+
+Architecture must allow additional roles later.
+
+---
+
+# 42. ADMIN MODULES
+
+Admin dashboard should manage:
+
+### Users
+
+* Students
+* Instructors
+* Admins
+* Bereans members
+
+### Courses
+
+* Courses
+* Categories
+* Modules
+* Lessons
+* Assignments
+* Quizzes
+* Materials
+* Certificates
+
+### Payments
+
+* Transactions
+* Enrollments
+* Coupons
+* Revenue
+
+### Speaking
+
+* Applications
+* Status
+* Notes
+
+### Reviews
+
+* Moderation
+* Featured reviews
+
+### Bereans
+
+* Applications
+* Members
+* Books
+* Reading schedules
+* Meetings
+
+### Content
+
+* Articles
+* Resources
+* Videos
+* Podcasts
+
+### Newsletter
+
+* Subscribers
+* Campaign metadata if implemented
+
+### Analytics
+
+* Website
+* LMS
+* Revenue
+* Engagement
+
+---
+
+# 43. NEON DATABASE
+
+The application's persistent database must use:
+
+**Neon PostgreSQL**
+
+Do not substitute an unrelated database.
+
+Design a normalized relational schema.
+
+Likely entities include:
+
+* users
+* profiles
+* roles
+* permissions
+* role_permissions
+* courses
+* course_categories
+* course_instructors
+* modules
+* lessons
+* lesson_materials
+* enrollments
+* lesson_progress
+* assignments
+* assignment_submissions
+* quizzes
+* quiz_questions
+* quiz_options
+* quiz_attempts
+* certificates
+* certificate_verifications
+* course_reviews
+* reviews
+* review_categories
+* speaking_requests
+* speaking_request_notes
+* bereans_applications
+* bereans_members
+* books
+* reading_schedules
+* reading_progress
+* meetings
+* messages
+* conversations
+* payments
+* payment_events
+* coupons
+* coupon_redemptions
+* affiliates
+* referrals
+* commissions
+* content
+* content_categories
+* newsletter_subscribers
+* notifications
+* audit_logs
+
+Do not blindly create these exact tables.
+
+Analyze relationships and normalize appropriately.
+
+Create proper:
+
+* Primary keys
+* Foreign keys
+* Unique constraints
+* Indexes
+* Timestamps
+* Soft-delete strategy where appropriate
+* Auditability
+* Transaction integrity
+
+Use migrations.
+
+Never make database changes manually in production without migration tracking.
+
+---
+
+# 44. DATABASE SECURITY
+
+Implement:
+
+* Strong authentication
+* Authorization
+* Role-based access
+* Server-side validation
+* Input sanitization
+* Secure password handling
+* Secure session management
+* CSRF protection where applicable
+* Rate limiting
+* File validation
+* Secure upload handling
+* Payment verification
+* Webhook verification
+* Audit logs
+* Protection against IDOR
+* Protection against unauthorized course access
+* Protection against privilege escalation
+
+Students must NEVER be able to manipulate frontend requests to unlock paid courses.
+
+---
+
+# 45. PAYSTACK SECURITY
+
+Never trust:
+
+* Frontend payment success
+* Client-submitted price
+* Client-submitted enrollment
+* Client-submitted payment status
+
+Server must:
+
+1. Create/initialize transaction
+2. Store reference
+3. Send user to Paystack
+4. Receive callback/webhook
+5. Verify transaction server-side
+6. Confirm amount/currency/course association
+7. Confirm transaction status
+8. Ensure transaction hasn't already been processed
+9. Record transaction
+10. Create enrollment
+11. Unlock course
+12. Send email
+
+Implement idempotency so duplicate webhooks cannot create duplicate enrollments.
+
+---
+
+# 46. AUTHENTICATION
+
+Support:
+
+* Email/password
+* Google authentication
+
+Require email verification.
+
+Implement:
+
+* Registration
+* Login
+* Logout
+* Forgot password
+* Reset password
+* Email verification
+* Session management
+* Account settings
+
+Admin authentication should support stronger security including 2FA architecture.
+
+---
+
+# 47. FILE STORAGE
+
+Do not store large media files inside Neon.
+
+Architect file storage separately.
+
+Support:
+
+* Course documents
+* PDFs
+* Images
+* Assignment submissions
+* Event invitation uploads
+* Other documents
+
+Validate:
+
+* MIME type
+* File extension
+* File size
+* Upload permissions
+
+Store secure references rather than exposing arbitrary storage paths.
+
+---
+
+# 48. VIDEO
+
+Primary video integrations:
+
+* YouTube
+* Vimeo
+
+Allow instructors/admins to embed video URLs securely.
+
+Do not download and re-host third-party videos unless explicitly required.
+
+---
+
+# 49. ANALYTICS
+
+Integrate:
+
+* Google Analytics
+* Google Search Console
+
+Admin analytics should include:
+
+* Website visitors
+* Popular pages
+* Course views
+* Enrollment
+* Revenue
+* Conversion
+* Active students
+* Course completion
+* Bereans members
+* Speaking requests
+* Review submissions
+* Newsletter subscribers
+
+Do not collect unnecessary personal data.
+
+---
+
+# 50. SEO
+
+SEO is a core requirement.
+
+Implement:
+
+* Semantic HTML
+* Metadata
+* Open Graph
+* Twitter/X cards
+* Canonical URLs
+* Sitemap
+* Robots.txt
+* Structured data/schema
+* Proper headings
+* Descriptive URLs
+* Image optimization
+* Alt text
+* Internal linking
+* Fast page performance
+
+Important brand/search entities should be represented naturally.
+
+Create appropriate structured data for:
+
+* Person
+* Organization
+* Course
+* Article
+* Event where applicable
+* Review where appropriate
+
+Do not fabricate reviews, credentials or achievements.
+
+---
+
+# 51. PERFORMANCE
+
+Target excellent performance.
+
+Optimize:
+
+* Images
+* Fonts
+* JavaScript
+* CSS
+* Database queries
+* API requests
+* Caching
+* Lazy loading
+
+Do not sacrifice performance for animations.
+
+---
+
+# 52. RESPONSIVENESS
+
+Design mobile-first.
+
+Test:
+
+* Mobile
+* Tablet
+* Laptop
+* Large desktop
+
+The mobile experience must not feel like a compressed desktop website.
+
+---
+
+# 53. ACCESSIBILITY
+
+Implement:
+
+* Proper semantic structure
+* Keyboard navigation
+* Visible focus states
+* Sufficient contrast
+* Accessible forms
+* Proper labels
+* Screen-reader-friendly structure
+* Reduced-motion considerations
+
+---
+
+# 54. DESIGN SYSTEM
+
+Create a reusable design system.
+
+Define:
+
+* Colors
+* Typography
+* Buttons
+* Inputs
+* Cards
+* Modals
+* Navigation
+* Tabs
+* Badges
+* Tables
+* Alerts
+* Toasts
+* Empty states
+* Loading states
+* Error states
+* Success states
+* Course components
+* Dashboard components
+
+Do not create every page independently.
+
+Build reusable components while ensuring pages still have distinctive compositions.
+
+---
+
+# 55. ANIMATION
+
+Use animation strategically.
+
+Possible animations:
+
+* Hero entrance
+* Image reveals
+* Text reveals
+* Scroll-based transitions
+* Navigation transitions
+* Course interactions
+* Dashboard transitions
+* Progress animations
+
+Avoid:
+
+* Excessive parallax
+* Constant movement
+* Distracting effects
+* Slow page transitions
+
+Animation should communicate quality, not technical capability.
+
+---
+
+# 56. NAVIGATION
+
+Proposed primary navigation:
+
+**Home**
+
+**About**
+
+**Speaking**
+
+**Gain Mastery Institute**
+
+**The Bereans**
+
+**Reviews**
+
+**Resources**
+
+**Contact**
+
+Potential right-side actions:
+
+**Login**
+
+**Join / Explore**
+
+Navigation should adapt intelligently on mobile.
+
+---
+
+# 57. CURRENT WEBSITE RESEARCH
+
+Before writing final website copy, inspect the existing public website:
+
+**https://themasterydr.com**
+
+Also research the public social presence associated with:
+
+**@themasterydr**
+
+Use publicly available information to understand:
+
+* Existing biography
+* Existing brand language
+* Existing programs
+* Existing achievements
+* Existing testimonials
+* Existing content
+* Existing positioning
+
+Important:
+
+Do NOT blindly copy the existing site.
+
+Use it as source material.
+
+Do NOT invent facts.
+
+If something is uncertain, flag it for approval.
+
+The current brand framework and founder information should be reconciled with the new brief.
+
+---
+
+# 58. IMPORTANT CONTENT ACCURACY RULE
+
+Do not manufacture:
+
+* Awards
+* Credentials
+* Testimonials
+* Student numbers
+* Countries reached
+* Partnerships
+* Media appearances
+* Organizations
+* Qualifications
+* Results
+* Quotes
+
+If information is not verified, either omit it or mark it as requiring confirmation.
+
+---
+
+# 59. PRIVATE INFORMATION
+
+Do not publicly expose:
+
+* Private family matters
+* Personal financial information
+* Sensitive relationship history
+* Private correspondence
+* Private contact information not intentionally provided for business purposes
+
+---
+
+# 60. NOT CURRENTLY INCLUDED
+
+Do NOT build the following as major public sections at launch:
+
+### Gain Mastery Movement
+
+Keep it out for now.
+
+### Gain Mastery Conference
+
+Keep it out for now.
+
+### Mighty Men of Mastery
+
+This WILL be architected as a private application/joining system, but it should not dominate the public navigation.
+
+Create an appropriate private application mechanism.
+
+---
+
+# 61. MIGHTY MEN OF MASTERY
+
+Create an application system.
+
+Users can:
+
+1. Learn about the initiative
+2. Apply
+3. Submit information
+4. Be reviewed
+5. Receive approval/rejection
+6. Gain access if approved
+
+The application should not automatically make someone a member.
+
+Admin manages applications.
+
+---
+
+# 62. EMAIL INFRASTRUCTURE
+
+Create a centralized email service abstraction.
+
+Do not hard-code email logic into individual pages.
+
+Email templates should be reusable.
+
+Use environment variables for credentials.
+
+Support future provider changes without rewriting the entire application.
+
+---
+
+# 63. NOTIFICATION SYSTEM
+
+Create in-app/email notification architecture.
+
+Notifications may include:
+
+* New message
+* Payment
+* Enrollment
+* Assignment
+* Grading
+* Certificate
+* Speaking application
+* Bereans status
+* Review status
+* Administrative announcements
+
+---
+
+# 64. AUDIT LOGGING
+
+Track important administrative events.
+
+For example:
+
+* Admin login
+* User role change
+* Course creation
+* Course deletion
+* Payment updates
+* Enrollment changes
+* Review moderation
+* Certificate issuance
+* Coupon creation
+* Speaking application status change
+
+Audit records should identify:
+
+* Actor
+* Action
+* Entity
+* Timestamp
+* Relevant metadata
+
+---
+
+# 65. ERROR HANDLING
+
+Every major workflow must have:
+
+* Loading state
+* Empty state
+* Success state
+* Error state
+* Retry mechanism where appropriate
+
+Never show raw database or server errors to users.
+
+---
+
+# 66. ADMIN CONTENT PREVIEW
+
+Where possible, allow administrators to preview:
+
+* Articles
+* Courses
+* Lessons
+* Reviews
+* Certificates
+
+before publishing.
+
+---
+
+# 67. SEED DATA
+
+Create realistic development seed data.
+
+Examples:
+
+* Sample course
+* Sample instructor
+* Sample student
+* Sample reviews
+* Sample Bereans book
+* Sample speaking request
+* Sample content
+
+Clearly identify development/sample content.
+
+Do not accidentally deploy fake testimonials as real testimonials.
+
+---
+
+# 68. DEVELOPMENT WORKFLOW
+
+IMPORTANT:
+
+Do NOT attempt to build the entire project blindly in one pass.
+
+Follow this workflow.
+
+## PHASE 1 — DISCOVERY
+
+Analyze this specification.
+
+Identify:
+
+* Ambiguities
+* Technical risks
+* Missing dependencies
+* Integration requirements
+* Security considerations
+
+Produce a concise implementation plan.
+
+---
+
+## PHASE 2 — ARCHITECTURE
+
+Before coding:
+
+Produce:
+
+* System architecture
+* Frontend architecture
+* Backend architecture
+* Database schema
+* Authentication architecture
+* Payment architecture
+* Email architecture
+* File storage architecture
+* LMS architecture
+* Admin architecture
+
+Show relationships between major entities.
+
+WAIT FOR APPROVAL.
+
+Do not proceed to full implementation until the architecture is approved.
+
+---
+
+# 69. PHASE 3 — DESIGN SYSTEM
+
+Create:
+
+* Color palette
+* Typography
+* Spacing
+* Components
+* Navigation
+* Buttons
+* Forms
+* Dashboard UI
+* Cards
+* Course components
+* Editorial layouts
+
+Create representative screens.
+
+WAIT FOR APPROVAL.
+
+---
+
+# 70. PHASE 4 — PUBLIC WEBSITE
+
+Build:
+
+* Homepage
+* About
+* Speaking
+* Speaking form
+* Reviews
+* The Bereans
+* Resources
+* Contact
+
+Test responsiveness.
+
+---
+
+# 71. PHASE 5 — AUTHENTICATION
+
+Implement:
+
+* Registration
+* Login
+* Google authentication
+* Email verification
+* Password reset
+* Sessions
+* Roles
+
+Test security.
+
+---
+
+# 72. PHASE 6 — LMS
+
+Implement:
+
+* Course catalog
+* Course pages
+* Modules
+* Lessons
+* Materials
+* Student dashboard
+* Progress
+* Assignments
+* Quizzes
+* Certificates
+* Reviews
+* Instructor functionality
+
+---
+
+# 73. PHASE 7 — PAYSTACK
+
+Implement:
+
+* Checkout
+* Payment initialization
+* Verification
+* Webhooks
+* Enrollment
+* Coupons
+* Receipts
+* Transaction history
+
+Test:
+
+* Successful payment
+* Failed payment
+* Duplicate webhook
+* Cancelled payment
+* Incorrect amount
+* Unauthorized enrollment
+
+---
+
+# 74. PHASE 8 — BEREANS
+
+Implement:
+
+* Application
+* Screening
+* Approval
+* Rejection
+* Dashboard
+* Books
+* Reading schedules
+* Meetings
+* Progress
+* Reviews
+
+---
+
+# 75. PHASE 9 — ADMIN
+
+Implement complete dashboard.
+
+---
+
+# 76. PHASE 10 — ANALYTICS + SEO
+
+Implement:
+
+* Google Analytics
+* Search Console readiness
+* SEO
+* Structured data
+* Sitemap
+* Metadata
+* Performance optimization
+
+---
+
+# 77. PHASE 11 — SECURITY AUDIT
+
+Before production:
+
+Test for:
+
+* Authentication vulnerabilities
+* Authorization failures
+* IDOR
+* Privilege escalation
+* SQL injection
+* XSS
+* CSRF
+* File upload vulnerabilities
+* Payment manipulation
+* Webhook replay
+* Coupon abuse
+* Course access bypass
+* Rate limiting
+* Session vulnerabilities
+
+---
+
+# 78. PHASE 12 — QUALITY ASSURANCE
+
+Test every major user journey.
+
+## Visitor
+
+Homepage → About → Course → Register → Payment → Enrollment
+
+## Student
+
+Login → Dashboard → Course → Lesson → Assignment → Feedback → Certificate
+
+## Bereans
+
+Apply → Review → Approve → Login → Dashboard → Book → Meeting
+
+## Speaker
+
+Speaking → Application → Confirmation → Admin notification → Admin processing
+
+## Reviewer
+
+Review → Moderation → Approval → Publication
+
+## Admin
+
+Login → Dashboard → Manage → Analytics
+
+---
+
+# 79. TESTING
+
+Create automated tests where appropriate.
+
+Include:
+
+* Unit tests
+* Integration tests
+* API tests
+* Payment workflow tests
+* Authentication tests
+* Authorization tests
+* Critical end-to-end tests
+
+Do not consider the project complete because the pages render.
+
+A feature is complete only when its full workflow works.
+
+---
+
+# 80. ENVIRONMENT VARIABLES
+
+Never hard-code:
+
+* Database credentials
+* Paystack keys
+* OAuth credentials
+* Email credentials
+* Storage credentials
+* Analytics secrets
+
+Create a clear `.env.example`.
+
+Document every variable.
+
+---
+
+# 81. DEPLOYMENT
+
+The project should be deployment-ready.
+
+Document:
+
+* Database setup
+* Neon configuration
+* Environment variables
+* Paystack setup
+* Webhook setup
+* Google OAuth
+* Email provider
+* File storage
+* Domain
+* DNS
+* Production migrations
+
+Current domain:
+
+**themasterydr.com**
+
+Current domain registrar:
+
+**Namecheap**
+
+The existing website will be replaced.
+
+Do not assume the current hosting provider.
+
+---
+
+# 82. DOMAIN EMAIL
+
+The founder already has domain-based email.
+
+Do not break existing email DNS configuration when preparing deployment.
+
+Document DNS changes carefully.
+
+---
+
+# 83. FUTURE SCALABILITY
+
+Initial expected user volume:
+
+**100–1,000**
+
+Long-term target:
+
+**10,000+**
+
+Architect accordingly.
+
+The backend should also be capable of supporting a future mobile application.
+
+Keep business logic/API functionality sufficiently separated from presentation so mobile clients can consume it later.
+
+---
+
+# 84. MOBILE APP READINESS
+
+Do not build the mobile application now.
+
+But design the backend so that future clients can consume:
+
+* Authentication
+* Courses
+* Progress
+* Payments
+* Messaging
+* Notifications
+* Bereans
+* Profiles
+
+through secure APIs.
+
+---
+
+# 85. DESIGN QUALITY BAR
+
+This is extremely important.
+
+The website must NOT look like a typical website generated by Claude, Gemini, Lovable, Bolt or another AI website generator.
+
+Avoid:
+
+* Generic gradient backgrounds
+* Excessive rounded cards
+* Random glassmorphism
+* Overused purple/blue gradients
+* Generic dashboard templates
+* Predictable three-card sections
+* Excessive icons
+* Excessive animations
+* Stock-photo aesthetics
+* Repetitive layouts
+
+Instead prioritize:
+
+* Strong editorial composition
+* Large typography
+* Intentional whitespace
+* Cinematic photography
+* Strong visual hierarchy
+* Custom transitions
+* Distinctive section compositions
+* Premium dark palette
+* Refined gold accents
+* Strong storytelling
+* High-quality micro-interactions
+
+The design should feel **custom-designed**, not assembled from a template.
+
+---
+
+# 86. HOMEPAGE VISUAL PRINCIPLE
+
+The first screen should immediately communicate:
+
+**This is a person with a serious philosophy, framework and mission around growth.**
+
+It should not immediately scream:
+
+"Buy my course."
+
+Commercial conversion should exist, but authority and trust come first.
+
+---
+
+# 87. COPYWRITING PRINCIPLE
+
+Avoid generic AI phrases such as:
+
+* Unlock your potential
+* Transform your life
+* Become the best version of yourself
+* Empower your journey
+* Take your life to the next level
+
+unless they genuinely fit the context.
+
+Use specific, thoughtful language.
+
+The copy should feel like a real person with a philosophy.
+
+The tone should be:
+
+* Intelligent
+* Conviction-driven
+* Warm
+* Authoritative
+* Human
+* Thought-provoking
+* Spiritually grounded
+
+Avoid sounding like a corporate consultancy.
+
+---
+
+# 88. CONTENT SOURCE
+
+Use the existing public website and public social media as research inputs.
+
+Existing website:
+
+https://themasterydr.com
+
+Social identity:
+
+@themasterydr
+
+Use information from these sources to help build accurate content.
+
+Where information conflicts with this project brief:
+
+* Do not silently choose.
+* Identify the conflict.
+* Ask for clarification where necessary.
+
+---
+
+# 89. BRAND ECOSYSTEM
+
+The final architecture should visually communicate:
+
+**THE MASTERY DR**
+
+↓
+
+**Gain Mastery**
+
+↓
+
+**Gain Mastery Institute**
+
+↓
+
+Courses / Education
+
+And alongside this:
+
+**The Bereans**
+
+Reading / Intellectual Growth
+
+And:
+
+**The Mastery Masterminds**
+
+Community
+
+And:
+
+**Speaking**
+
+Organizations / Events
+
+And:
+
+**Mighty Men of Mastery**
+
+Private Initiative
+
+The ecosystem should feel unified rather than like unrelated projects.
+
+---
+
+# 90. FINAL EXPECTATION
+
+The finished platform should be something The Mastery Dr can realistically grow into for years.
+
+It should not merely solve today's requirements.
+
+It should provide the foundation for:
+
+* A global personal brand
+* A growing educational institution
+* Thousands of students
+* Multiple instructors
+* A growing reading community
+* Speaking engagements
+* Digital products
+* Community
+* Content
+* Future mobile applications
+* International users
+* More advanced analytics
+* Additional payment models
+
+Build for today's needs without creating unnecessary complexity, but make deliberate architectural decisions that prevent expensive rebuilding later.
+
+---
+
+# FINAL INSTRUCTION TO ANTIGRAVITY
+
+Before writing significant amounts of code:
+
+1. Analyze this specification.
+2. Research the existing public The Mastery Dr website.
+3. Identify ambiguities.
+4. Produce the proposed architecture.
+5. Produce the database ERD/schema.
+6. Produce the application architecture.
+7. Produce the navigation/information architecture.
+8. Produce the design system.
+9. Produce the major user flows.
+10. Identify security risks.
+11. Identify external dependencies.
+12. Identify anything that requires my credentials/configuration.
+13. Present the plan for approval.
+
+**Do not begin full implementation until I approve the architecture and design direction.**
+
+After approval, implement the system in controlled phases.
+
+After every major phase:
+
+* Run tests.
+* Inspect the UI.
+* Check mobile responsiveness.
+* Check database behavior.
+* Check authentication.
+* Check authorization.
+* Check error states.
+* Check accessibility.
+* Check performance.
+* Fix identified issues.
+
+Do not declare the project complete simply because it builds successfully.
+
+The objective is a **production-quality digital ecosystem for The Mastery Dr**, not a demonstration project.
+
+The final result should feel like a globally ambitious personal brand platform that combines **authority, growth, purpose, faith, education and technology** while remaining elegant, human and distinctive.

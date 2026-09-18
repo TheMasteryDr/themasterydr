@@ -1,0 +1,563 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* ========================================================
+   THE MASTERY DR — DESIGN SYSTEM & TOKENS (DARK LUXURY)
+   ======================================================== */
+
+:root {
+  /* Surfaces & Backgrounds (Dark Mode Exclusively) */
+  --bg-primary: #070605;
+  --bg-secondary: #0E0C09;
+  --bg-tertiary: #16130F;
+  --bg-card: #13100C;
+  --bg-card-hover: #1A1612;
+  --bg-glass: rgba(14, 12, 9, 0.85);
+
+  /* Gold Palette (Refined Metallic Gold, Never Gaudy) */
+  --gold-primary: #C7A24B;
+  --gold-bright: #E8C879;
+  --gold-dim: #9E7D31;
+  --gold-border: rgba(199, 162, 75, 0.28);
+  --gold-border-bright: rgba(199, 162, 75, 0.55);
+  --gold-glow: rgba(199, 162, 75, 0.12);
+  --gold-surface: rgba(199, 162, 75, 0.08);
+
+  /* Worldview & Balance Accents */
+  --wine: #7C1F3E;
+  --wine-subtle: rgba(124, 31, 62, 0.25);
+  --wine-border: rgba(124, 31, 62, 0.45);
+  --emerald: #1B4332;
+  --emerald-subtle: rgba(27, 67, 50, 0.28);
+  --emerald-bright: #2D6A4F;
+
+  /* Typography / Foreground Tones */
+  --text-primary: #F7F3E9;
+  --text-secondary: #C8BFAB;
+  --text-muted: #8E8471;
+  --text-faint: #4E473B;
+  --line-dark: rgba(199, 162, 75, 0.18);
+  --line-subtle: rgba(247, 243, 233, 0.08);
+
+  /* Functional Status */
+  --status-success: #2D6A4F;
+  --status-warning: #C79A3B;
+  --status-error: #9B2226;
+  --status-info: #2B5C8F;
+
+  /* Typography Stacks */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Layout Boundaries */
+  --max-width: 1240px;
+  --edge: clamp(20px, 5vw, 64px);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ========================================================
+   BASE RESETS & ELEMENT STYLES
+   ======================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--bg-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+::selection {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================================
+   TYPOGRAPHY SYSTEM
+   ======================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+em, .italic {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold-bright);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--gold-primary);
+  display: inline-block;
+}
+
+.eyebrow-wine {
+  color: #E26D8C;
+}
+
+.eyebrow-wine::before {
+  background: var(--wine);
+}
+
+.eyebrow-emerald {
+  color: #52B788;
+}
+
+.eyebrow-emerald::before {
+  background: var(--emerald);
+}
+
+/* ========================================================
+   CONTAINER & SCAFFOLDING
+   ======================================================== */
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+}
+
+.section-padding {
+  padding: 110px 0;
+  position: relative;
+}
+
+.section-head {
+  max-width: 680px;
+  margin-bottom: 54px;
+}
+
+.section-head h2 {
+  font-size: clamp(30px, 4.2vw, 48px);
+  margin-top: 16px;
+  line-height: 1.12;
+}
+
+.section-head p {
+  color: var(--text-secondary);
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ========================================================
+   SIGNATURE PHOTO FRAME (HERO & EDITORIAL ELEMENT)
+   ======================================================== */
+
+.photo-frame {
+  position: relative;
+  border: 1px solid var(--gold-border);
+  background: var(--bg-secondary);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.photo-frame::before,
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold-primary);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.photo-frame::before {
+  top: 10px;
+  left: 10px;
+  border-top: 2px solid var(--gold-primary);
+  border-left: 2px solid var(--gold-primary);
+}
+
+.photo-frame::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 2px solid var(--gold-primary);
+  border-right: 2px solid var(--gold-primary);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: contrast(1.05) saturate(0.95) brightness(0.98);
+  transition: transform 0.6s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.02);
+}
+
+.photo-frame .glaze {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(199, 162, 75, 0.12), rgba(7, 6, 5, 0.45) 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-frame .caption-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  padding: 16px 20px;
+  background: linear-gradient(0deg, rgba(7, 6, 5, 0.92), transparent);
+}
+
+/* ========================================================
+   BUTTONS & ACTIONS
+   ======================================================== */
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-gold {
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+  border-color: var(--gold-primary);
+}
+
+.btn-gold:hover {
+  background: var(--gold-bright);
+  border-color: var(--gold-bright);
+  box-shadow: 0 4px 20px var(--gold-glow);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--gold-border);
+}
+
+.btn-outline:hover {
+  background: var(--gold-surface);
+  border-color: var(--gold-primary);
+  color: var(--gold-bright);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+  padding: 12px 18px;
+}
+
+.btn-ghost:hover {
+  color: var(--gold-bright);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 11px;
+}
+
+/* ========================================================
+   CARDS, TILES & SURFACES
+   ======================================================== */
+
+.luxury-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-dark);
+  padding: 34px 30px;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-card:hover {
+  border-color: var(--gold-border-bright);
+  background: var(--bg-card-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-gold {
+  background: var(--gold-surface);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-bright);
+}
+
+.badge-wine {
+  background: var(--wine-subtle);
+  border: 1px solid var(--wine-border);
+  color: #F080A0;
+}
+
+.badge-emerald {
+  background: var(--emerald-subtle);
+  border: 1px solid rgba(27, 67, 50, 0.6);
+  color: #74C69D;
+}
+
+/* ========================================================
+   FORM CONTROLS & INPUTS
+   ======================================================== */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: rgba(14, 12, 9, 0.9);
+  border: 1px solid var(--line-dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px var(--gold-glow);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-faint);
+}
+
+/* ========================================================
+   NAVIGATION STYLES
+   ======================================================== */
+
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-dark);
+  transition: var(--transition);
+}
+
+.nav-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 18px var(--edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.wordmark span.sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--gold-primary);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+nav.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav.main-nav a.nav-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav.main-nav a.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--gold-primary);
+  transition: right 0.25s ease;
+}
+
+nav.main-nav a.nav-link:hover {
+  color: var(--text-primary);
+}
+
+nav.main-nav a.nav-link:hover::after,
+nav.main-nav a.nav-link.active::after {
+  right: 0;
+}
+
+/* ========================================================
+   GRID UTILITIES
+   ======================================================== */
+
+.grid-2 {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.grid-3 {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================================
+   ANIMATION / REVEAL HELPERS
+   ======================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
