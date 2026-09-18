@@ -3,12 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, User, Sparkles, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowRight, User } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showAnnouncement, setShowAnnouncement] = useState(true);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,108 +36,15 @@ export const Header: React.FC = () => {
 
   return (
     <header className="site-header" style={{
-      boxShadow: scrolled ? '0 12px 36px rgba(0,0,0,0.6)' : 'none',
-      borderBottomColor: scrolled ? 'var(--gold-border-bright)' : 'var(--line-dark)'
+      boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.8)' : 'none',
+      borderBottomColor: scrolled ? '#2E2E2E' : 'var(--line-dark)'
     }}>
-      {/* 1. Tony Robbins & PBD Style Urgent Announcement Bar */}
-      {showAnnouncement && (
-        <div style={{
-          background: 'linear-gradient(90deg, #1A1308 0%, #3D2B10 50%, #1A1308 100%)',
-          borderBottom: '1px solid rgba(199, 162, 75, 0.35)',
-          padding: '7px var(--edge)',
-          fontSize: '11px',
-          fontFamily: 'var(--font-mono)',
-          color: 'var(--text-primary)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          letterSpacing: '0.04em'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <span style={{
-              background: 'var(--gold-primary)',
-              color: '#070605',
-              padding: '1px 6px',
-              borderRadius: '2px',
-              fontWeight: 700,
-              fontSize: '9.5px',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px'
-            }}>
-              <Sparkles size={10} />
-              Live
-            </span>
-            <span>2026 Gain Mastery Institute Cohort Admissions Open</span>
-            <span style={{ color: 'var(--gold-border)' }}>|</span>
-            <Link
-              href="/institute"
-              style={{
-                color: 'var(--gold-bright)',
-                fontWeight: 700,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '3px',
-                textDecoration: 'underline',
-                textUnderlineOffset: '3px'
-              }}
-            >
-              <span>Explore Programs &amp; Enroll</span>
-              <ChevronRight size={12} />
-            </Link>
-          </div>
-
-          <button
-            onClick={() => setShowAnnouncement(false)}
-            aria-label="Dismiss announcement"
-            style={{
-              position: 'absolute',
-              right: '16px',
-              background: 'none',
-              border: 'none',
-              color: 'var(--text-muted)',
-              cursor: 'pointer',
-              padding: '4px',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-          >
-            <X size={13} />
-          </button>
-        </div>
-      )}
-
-      {/* 2. Main Navigation Bar */}
       <div className="nav-wrap">
-        {/* Brand Wordmark with Luxury Gold Monogram Badge */}
-        <Link href="/" className="wordmark" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
-          <div style={{
-            width: '38px',
-            height: '38px',
-            border: '1.5px solid var(--gold-primary)',
-            background: 'linear-gradient(145deg, rgba(199, 162, 75, 0.15), rgba(7, 6, 5, 0.9))',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: 'var(--font-display)',
-            fontWeight: 700,
-            fontSize: '15px',
-            color: 'var(--gold-bright)',
-            boxShadow: '0 0 14px var(--gold-glow)'
-          }}>
-            MD
-          </div>
-          <div>
-            <div style={{ fontSize: '18px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-              The Mastery Dr
-            </div>
-            <span className="sub" style={{ display: 'block', fontSize: '8.5px', letterSpacing: '0.2em' }}>
-              MOSES OLADOYE
-            </span>
-          </div>
+        {/* PBD Exact Wordmark Header */}
+        <Link href="/" className="wordmark-pbd">
+          <span>MOSES</span>
+          <span className="red">OLADOYE</span>
+          <span className="sub-tag" style={{ marginLeft: '6px' }}>/ THE MASTERY DR</span>
         </Link>
 
         {/* Desktop Primary Navigation */}
@@ -151,8 +57,7 @@ export const Header: React.FC = () => {
                 href={link.href}
                 className={`nav-link ${isActive ? 'active' : ''}`}
                 style={{
-                  color: isActive ? 'var(--gold-bright)' : undefined,
-                  fontWeight: isActive ? 700 : 500
+                  color: isActive ? 'var(--pbd-red)' : undefined
                 }}
               >
                 {link.label}
@@ -161,25 +66,22 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* Desktop Right CTA Group */}
-        <div style={{ display: 'none', alignItems: 'center', gap: '14px' }} className="desktop-actions">
+        {/* Desktop Right CTA (PBD Buttons) */}
+        <div style={{ display: 'none', alignItems: 'center', gap: '12px' }} className="desktop-actions">
           <Link
             href="/dashboard"
-            className="btn btn-ghost btn-sm"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.06em'
-            }}
+            className="c-btn c-btn--dark"
+            style={{ padding: '9px 16px', fontSize: '11px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            <User size={13} color="var(--gold-primary)" />
+            <User size={13} />
             <span>Portal</span>
           </Link>
-          <Link href="/institute" className="btn btn-gold btn-sm">
-            <span>Explore LMS</span>
+          <Link
+            href="/institute"
+            className="c-btn c-btn--red"
+            style={{ padding: '9px 20px', fontSize: '11px' }}
+          >
+            <span>Explore Institute</span>
             <ArrowRight size={12} />
           </Link>
         </div>
@@ -191,14 +93,14 @@ export const Header: React.FC = () => {
           style={{
             background: 'none',
             border: 'none',
-            color: 'var(--text-primary)',
+            color: '#FFFFFF',
             cursor: 'pointer',
             padding: '8px',
             display: 'block'
           }}
           className="mobile-toggle"
         >
-          {mobileMenuOpen ? <X size={24} color="var(--gold-bright)" /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={26} color="var(--pbd-red)" /> : <Menu size={26} />}
         </button>
       </div>
 
@@ -207,17 +109,17 @@ export const Header: React.FC = () => {
         <div
           style={{
             position: 'fixed',
-            top: showAnnouncement ? '112px' : '73px',
+            top: '74px',
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: 'rgba(7, 6, 5, 0.98)',
+            backgroundColor: 'rgba(10, 10, 10, 0.98)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            padding: '24px var(--edge)',
+            padding: '28px var(--edge)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '14px',
+            gap: '16px',
             overflowY: 'auto',
             borderTop: '1px solid var(--line-dark)',
             zIndex: 99
@@ -230,27 +132,28 @@ export const Header: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 style={{
-                  fontSize: '18px',
-                  fontFamily: 'var(--font-display)',
-                  color: isActive ? 'var(--gold-bright)' : 'var(--text-primary)',
+                  fontSize: '22px',
+                  fontFamily: 'var(--font-hero)',
+                  letterSpacing: '0.04em',
+                  color: isActive ? 'var(--pbd-red)' : '#FFFFFF',
                   padding: '10px 0',
-                  borderBottom: '1px solid var(--line-subtle)',
+                  borderBottom: '1px solid var(--line-dark)',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center'
                 }}
               >
                 <span>{link.label}</span>
-                {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold-primary)' }}></span>}
+                {isActive && <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--pbd-red)' }}></span>}
               </Link>
             );
           })}
-          <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Link href="/dashboard" className="btn btn-outline" style={{ width: '100%' }}>
-              <User size={16} color="var(--gold-primary)" />
+          <div style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <Link href="/dashboard" className="c-btn c-btn--dark" style={{ width: '100%' }}>
+              <User size={16} />
               <span>Student / Member Portal</span>
             </Link>
-            <Link href="/institute" className="btn btn-gold" style={{ width: '100%' }}>
+            <Link href="/institute" className="c-btn c-btn--red" style={{ width: '100%' }}>
               <span>Explore Gain Mastery Institute</span>
             </Link>
           </div>

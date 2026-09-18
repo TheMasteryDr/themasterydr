@@ -5,29 +5,27 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowRight,
+  Play,
+  X,
+  Plus,
+  Minus,
+  Star,
+  Clock,
+  Users,
   Compass,
   TrendingUp,
   Coins,
   Crown,
   Flame,
   Target,
-  BookOpen,
-  GraduationCap,
-  Mic,
-  MessageCircle,
-  Star,
-  CheckCircle2,
-  Clock,
-  Users,
-  Play,
-  X,
-  Volume2,
-  Calendar,
-  Sparkles,
-  ArrowUpRight,
-  Layers,
+  ChevronLeft,
   ChevronRight,
-  ShieldAlert
+  Maximize2,
+  CheckCircle2,
+  Calendar,
+  Layers,
+  Sparkles,
+  ArrowUpRight
 } from 'lucide-react';
 import {
   SEED_COURSES,
@@ -38,203 +36,145 @@ import {
 
 export default function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [activePillarIndex, setActivePillarIndex] = useState(0);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
-  const [audioPlaying, setAudioPlaying] = useState(false);
+  const [expandedCompanies, setExpandedCompanies] = useState<{ [key: string]: boolean }>({
+    'gmi': true,
+    'bereans': false,
+    'speaking': false,
+    'dispatch': false,
+    'mighty-men': false,
+    'advisory': false
+  });
+  const [flywheelZoomOpen, setFlywheelZoomOpen] = useState(false);
   const [reviewFilter, setReviewFilter] = useState<'all' | 'personal_brand' | 'institute' | 'bereans'>('all');
+
+  const toggleCompany = (id: string) => {
+    setExpandedCompanies(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const featuredCourses = SEED_COURSES.slice(0, 3);
   const filteredReviews = reviewFilter === 'all'
     ? SEED_REVIEWS.filter(r => r.isFeatured)
     : SEED_REVIEWS.filter(r => r.category === reviewFilter);
-  const featuredArticles = SEED_CONTENT_ITEMS.slice(0, 3);
 
-  // 1. The 6 Proprietary Dimensions (Tony Robbins Life Pillars style)
-  const pillars = [
-    {
-      roman: 'I',
-      title: 'Purpose',
-      tagline: "Knowing what you're built to carry.",
-      description: 'Moving from accidental living to clear, conviction-driven clarity about your personal assignment and contribution.',
-      diagnosis: 'Are you working hard on things that do not matter to your ultimate calling?',
-      shift: 'From reactive survival to strategic stewardship of your divine design.',
-      icon: Compass,
-      accent: 'var(--gold-bright)',
-      badge: 'Foundation',
-      courseSlug: 'purpose-and-leadership-blueprint'
-    },
-    {
-      roman: 'II',
-      title: 'Personal Growth',
-      tagline: 'Mindset, habits, and daily discipline.',
-      description: 'Developing sustainable systems of personal mastery that turn human potential into tested, expressed capacity.',
-      diagnosis: 'Are you frustrated by repeated cycles of high motivation followed by sudden burnout?',
-      shift: 'From emotional willpower to non-negotiable daily architecture.',
-      icon: TrendingUp,
-      accent: '#E8C879',
-      badge: 'Discipline',
-      courseSlug: 'architecture-of-intentional-growth'
-    },
-    {
-      roman: 'III',
-      title: 'Financial Growth',
-      tagline: 'Real intelligence about money and markets.',
-      description: 'Mathematical, risk-governed capital stewardship and market understanding, rejecting get-rich-quick delusions.',
-      diagnosis: 'Are you earning income but leaking wealth through lack of capital intelligence?',
-      shift: 'From short-term speculation to generational asset accumulation.',
-      icon: Coins,
-      accent: '#74C69D',
-      badge: 'Stewardship',
-      courseSlug: 'financial-intelligence-strategic-market-discipline'
-    },
-    {
-      roman: 'IV',
-      title: 'Leadership',
-      tagline: 'Influence, and building things that outlast you.',
-      description: 'Cultivating moral authority, team mobilization, and integrity in the dark so your public influence does not collapse.',
-      diagnosis: 'Are people complying with your authority or truly inspired by your example?',
-      shift: 'From positional title to undeniable moral authority and vision.',
-      icon: Crown,
-      accent: '#F080A0',
-      badge: 'Influence',
-      courseSlug: 'purpose-and-leadership-blueprint'
-    },
-    {
-      roman: 'V',
-      title: 'Spiritual Depth',
-      tagline: 'A disciplined relationship with God.',
-      description: 'Grounded in a Christian worldview, recognizing that eternal purpose precedes temporary ambition and secular success.',
-      diagnosis: 'Is your external success masking internal spiritual dryness and anxiety?',
-      shift: 'From compartmentalized religion to unwavering spiritual conviction.',
-      icon: Flame,
-      accent: 'var(--gold-primary)',
-      badge: 'Conviction',
-      courseSlug: 'architecture-of-intentional-growth'
-    },
-    {
-      roman: 'VI',
-      title: 'Strategy',
-      tagline: 'Clear thinking, systems, sharper decisions.',
-      description: 'Transforming emotional ambition into executable quarterly architectures and decisive everyday maneuvers.',
-      diagnosis: 'Do you know where you want to go, but constantly get bogged down in chaos?',
-      shift: 'From wishful thinking to ruthless strategic execution.',
-      icon: Target,
-      accent: '#A5B4FC',
-      badge: 'Execution',
-      courseSlug: 'architecture-of-intentional-growth'
-    },
-  ];
-
-  // 2. The Story & Formative Milestones (Patrick Bet-David Interactive Timeline style)
-  const milestones = [
+  // 1. PBD Style "The Story" Milestones
+  const storyMilestones = [
     {
       year: '2018',
-      label: 'The Awakening',
-      headline: 'The Detest for Drift and Passive Living',
-      text: 'Moses Oladoye observed a tragic commonality among talented people across Nigeria and Africa: immense intellectual gifts, spiritual zeal, but absolute stagnation due to lack of personal systems and strategic discipline. The conviction was born: "No one is empty; every man is designed for something great; that greatness just needs to find expression."',
+      label: 'Lagos, Nigeria',
+      chapter: 'The Awakening & The Detest for Drift',
+      body: 'Moses Oladoye was confronted by a pervasive reality across Nigeria and Africa: brilliant minds, intense spiritual zeal, but rampant stagnation and accidental living. The conviction took root: "No one is empty; every man is designed for something great; that greatness just needs to find expression." He began mentoring young men and professionals on discipline, systems, and directional clarity.',
       image: '/images/2_moses_oladoye_in_a_reflective_.jpg',
-      tag: 'Origin Mandate'
     },
     {
       year: '2020',
-      label: 'The Bereans',
-      headline: 'Founding The Bereans Reading Community',
-      text: 'To cure shallow thinking, Moses launched The Bereans Reading Club, named after the diligent Bereans of the scriptures. Starting with a handful of hungry minds, the guild grew into a rigorous monthly reading cohort transforming readers into analytical thinkers across continents.',
+      label: 'Virtual Guild',
+      chapter: 'The Bereans Reading Movement',
+      body: 'Recognizing that shallow thinking produces shallow lives, Moses launched The Bereans Reading Community, inspired by the biblical Bereans who examined principles with diligence. What started with a small group quickly expanded into an international monthly guild, training readers to become critical thinkers and strategic executors.',
       image: '/images/3_moses_teaching_on_productivity.jpg',
-      tag: 'Intellectual Discipline'
     },
     {
       year: '2022',
       label: 'The Framework',
-      headline: 'Codifying the Six Dimensions of Mastery',
-      text: 'Recognizing that growth in isolation leads to eventual fracture, Moses codified the Six Dimensions of Mastery: Purpose, Personal Growth, Financial Growth, Leadership, Spiritual Depth, and Strategy. A balanced architecture ensuring leaders build things that do not collapse.',
+      chapter: 'Codifying The Six Dimensions of Mastery',
+      body: 'Understanding that isolated growth leads to sudden collapse, Moses codified the proprietary Six Dimensions of Mastery: Purpose, Personal Growth, Financial Growth, Leadership, Spiritual Depth, and Strategy. An integrated life architecture ensuring that outer influence is matched by inner moral fortitude.',
       image: '/images/4_moses_oladoye_editorial_portra.jpg',
-      tag: 'Proprietary Methodology'
     },
     {
       year: '2024',
-      label: 'The Institute',
-      headline: 'Gain Mastery Institute Digital Campus',
-      text: 'The teaching mandate scaled into Gain Mastery Institute — an official digital learning institute offering structured certification courses, curriculum tracks, and intensive cohorts for ambitious builders, corporate executives, and emerging leaders.',
+      label: 'Digital Campus',
+      chapter: 'Gain Mastery Institute Launch',
+      body: 'The mandate scaled from informal coaching to a structured educational institution. Gain Mastery Institute was launched as a digital LMS platform offering certified curriculum, quizzes, and quarterly cohort intensives for builders, executives, and emerging leaders across 20+ countries.',
       image: '/images/7_moses_oladoye_studio_portrait.jpg',
-      tag: 'LMS Platform'
     },
     {
       year: '2026',
-      label: 'The Global Horizon',
-      headline: 'Empowering Determined Minds Across the World',
-      text: 'Today, The Mastery Dr ecosystem spans keynote stages, virtual cohorts across 20+ nations, corporate advisory sessions, and the private Mighty Men fraternity. The vision remains resolute: turning latent human potential into tested, expressed capacity for generational impact.',
+      label: 'Global Expansion',
+      chapter: 'The Flywheel in Motion',
+      body: 'Today, the ecosystem spans global keynotes, digital learning tracks, published field notes, and the private Mighty Men fraternity. Operating across Lagos, London, and the global diaspora, Moses continues to build systems that turn human potential into tested, expressed capacity for generational impact.',
       image: '/images/6_moses_oladoye_speaking_at_an_e.jpg',
-      tag: 'Global Expansion'
-    }
+    },
   ];
 
-  // 3. The Ecosystem Pillars (Patrick Bet-David Flywheel style)
-  const ecosystem = [
+  // 2. PBD Style "His Companies / Ecosystem"
+  const companies = [
     {
-      id: '01',
+      id: 'gmi',
       title: 'Gain Mastery Institute',
-      role: 'Educational Engine',
-      description: 'Structured, rigorous LMS courses and cohort programs providing certificates of completion in purpose, financial intelligence, and systems.',
-      href: '/institute',
-      badge: 'Curriculum & Certification'
+      role: 'Educational Engine · LMS & Certification',
+      excerpt: 'A structured digital academy offering certified curriculum on purpose, capital stewardship, and high-performance execution.',
+      fullText: 'Gain Mastery Institute equips ambitious minds with university-level rigor. Features multi-module video curriculum, assessments, practical projects, and verified digital certificates of completion for ambitious career builders and founders.',
+      link: '/institute',
+      badge: 'LMS Platform'
     },
     {
-      id: '02',
+      id: 'bereans',
       title: 'The Bereans Reading Club',
-      role: 'Intellectual Guild',
-      description: 'A global reading movement cultivating deep analytical reading, mental rigor, and disciplined monthly book discussions.',
-      href: '/bereans',
-      badge: 'Monthly Cohorts'
+      role: 'Intellectual Discipline · Monthly Guild',
+      excerpt: 'A global reading movement cultivating deep analytical reading, mental rigor, and disciplined monthly book audits.',
+      fullText: 'Inspired by the biblical Bereans, this community reads one transformative book each month with structured weekly audits, guided prompts, and live virtual discussions to convert information into behavioral habit.',
+      link: '/bereans',
+      badge: 'Reading Guild'
     },
     {
-      id: '03',
+      id: 'speaking',
       title: 'Keynote & Corporate Speaking',
-      role: 'High-Impact Rooms',
-      description: 'Transformative keynote addresses and executive seminars delivering paradigm-shifting clarity to conferences, corporations, and churches.',
-      href: '/speaking',
-      badge: 'Live Events'
+      role: 'High-Impact Rooms · Executive Seminars',
+      excerpt: 'Keynote delivery and corporate training designed to bring clarity, accountability, and execution to leadership rooms.',
+      fullText: 'Moses Oladoye is regularly invited to address leadership summits, corporate strategy sessions, church conferences, and university congresses on diligence, leadership under pressure, and strategic life alignment.',
+      link: '/speaking',
+      badge: 'Keynotes & Events'
     },
     {
-      id: '04',
+      id: 'dispatch',
       title: 'The Mastery Dispatch',
-      role: 'Strategic Publications',
-      description: 'Weekly field notes, proprietary blueprints, and video masterclasses distributed to thousands of ambitious minds worldwide.',
-      href: '/resources',
-      badge: 'Weekly Insights'
-    }
+      role: 'Weekly Publications · Strategic Letters',
+      excerpt: 'Unfiltered, direct field notes and video masterclasses distributed weekly to thousands of determined minds.',
+      fullText: 'One honest letter every week breaking down mental models, capital stewardship, purpose alignment, and operational frameworks. Reaches readers across 20+ nations.',
+      link: '/resources',
+      badge: 'Media & Field Notes'
+    },
+    {
+      id: 'mighty-men',
+      title: 'Mighty Men of Mastery',
+      role: 'Private Brotherhood · Executive Fellowship',
+      excerpt: 'An exclusive fraternity for purposeful men committed to spiritual depth, masculine responsibility, and financial dominion.',
+      fullText: 'A high-accountability cohort for men seeking to master their private discipline, build generational family legacies, and lead with moral authority in culture and commerce.',
+      link: '/mighty-men',
+      badge: 'Private Guild'
+    },
+    {
+      id: 'advisory',
+      title: 'Strategic Growth Advisory',
+      role: 'Executive Advisory · 1-on-1 Frameworks',
+      excerpt: 'Bespoke strategic guidance for founders and high-performing leaders seeking quarterly life architectures.',
+      fullText: 'Direct diagnostic engagement analyzing personal bottlenecks, capital allocation habits, and leadership alignment to build an executable roadmap for sustainable scaling.',
+      link: '/contact',
+      badge: 'Executive Advisory'
+    },
   ];
 
   return (
     <div style={{ position: 'relative', overflowX: 'hidden' }}>
 
       {/* ========================================================
-          1. CINEMATIC AUTHORITY HERO (PATRICK BET-DAVID + TONY ROBBINS)
+          1. PBD EXACT CINEMATIC HERO (.h-hero)
           ======================================================== */}
       <section style={{
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: '#0A0A0A',
         borderBottom: '1px solid var(--line-dark)',
         position: 'relative',
         padding: '70px 0 90px',
         overflow: 'hidden'
       }}>
-        {/* Ambient Luxury Lighting Glows */}
+        {/* Subtle Ambient Red Glow */}
         <div style={{
           position: 'absolute',
-          top: '-10%',
-          right: '5%',
-          width: '550px',
-          height: '550px',
-          background: 'radial-gradient(circle, rgba(199, 162, 75, 0.12) 0%, transparent 65%)',
-          pointerEvents: 'none'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          bottom: '0',
-          left: '-5%',
-          width: '450px',
-          height: '450px',
-          background: 'radial-gradient(circle, rgba(124, 31, 62, 0.09) 0%, transparent 70%)',
+          top: '-15%',
+          right: '0',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(207, 46, 46, 0.12) 0%, transparent 65%)',
           pointerEvents: 'none'
         }}></div>
 
@@ -242,146 +182,150 @@ export default function HomePage() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '54px',
+            gap: '50px',
             alignItems: 'center'
           }}>
-            {/* Hero Left Content */}
+            {/* Left Typographic Hierarchy: PBD Exact Format */}
             <div>
-              <div className="eyebrow" style={{ marginBottom: '20px' }}>
-                <span>LAGOS</span>
-                <span style={{ color: 'var(--text-faint)' }}>·</span>
-                <span>LONDON</span>
-                <span style={{ color: 'var(--text-faint)' }}>·</span>
-                <span>GLOBAL DIASPORA</span>
+              <div className="eyebrow" style={{ marginBottom: '16px' }}>
+                <span>LAGOS · LONDON · GLOBAL DIASPORA</span>
               </div>
 
+              {/* Giant Stacked 2-Line Heading */}
               <h1 style={{
-                fontSize: 'clamp(38px, 5.2vw, 74px)',
-                lineHeight: '1.06',
-                color: 'var(--text-primary)',
-                marginBottom: '24px',
-                letterSpacing: '-0.025em'
+                fontFamily: 'var(--font-hero)',
+                fontSize: 'clamp(54px, 8.5vw, 108px)',
+                lineHeight: '0.88',
+                letterSpacing: '0.02em',
+                color: '#FFFFFF',
+                marginBottom: '20px',
+                textTransform: 'uppercase'
               }}>
-                Growth without direction is just <em className="text-gold-gradient">motion.</em>
+                MOSES<br />
+                <span style={{ color: 'var(--pbd-red)' }}>OLADOYE</span>
               </h1>
 
+              {/* Punchy PBD 4-Word Identity Subtitle */}
               <p style={{
-                fontSize: 'clamp(16px, 1.6vw, 19px)',
-                color: 'var(--text-secondary)',
-                lineHeight: '1.65',
-                maxWidth: '560px',
-                borderLeft: '2.5px solid var(--gold-primary)',
-                paddingLeft: '22px',
-                marginBottom: '36px'
+                fontFamily: 'var(--font-body)',
+                fontSize: 'clamp(14px, 1.4vw, 17px)',
+                fontWeight: 800,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: '#CCCCCC',
+                marginBottom: '24px'
               }}>
-                A rigorous framework for determined minds done drifting — Purpose, Personal Growth, Financial Intelligence, and Faith, built for generational impact.
+                Growth Coach · Author · Founder · Strategist
               </p>
 
-              {/* Action Buttons: Patrick Bet-David & Tony Robbins Style */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '38px' }}>
-                <Link href="/institute" className="btn btn-gold">
-                  <span>Explore Gain Mastery Institute</span>
-                  <ArrowRight size={14} />
-                </Link>
+              <p style={{
+                color: 'var(--text-secondary)',
+                fontSize: '16px',
+                lineHeight: '1.65',
+                maxWidth: '520px',
+                marginBottom: '32px'
+              }}>
+                A rigorous framework for determined minds done drifting. Purpose, financial intelligence, leadership, and disciplined execution for generational impact.
+              </p>
 
+              {/* PBD "Watch his story" Play Button + Dual Action Buttons */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '36px' }}>
                 <button
                   onClick={() => setVideoModalOpen(true)}
-                  className="btn btn-outline"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  className="h-hero__play"
                 >
-                  <div style={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: 'var(--gold-primary)',
-                    color: '#070605',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    <Play size={10} fill="#070605" />
+                  <div className="h-hero__play-btn">
+                    <Play size={15} fill="#FFFFFF" style={{ marginLeft: '2px' }} />
                   </div>
-                  <span>Watch The Vision</span>
+                  <div className="h-hero__play-text">
+                    Watch His Story
+                  </div>
                 </button>
 
-                <Link href="/speaking" className="btn btn-ghost" style={{ padding: '12px 14px' }}>
-                  <span>Invite to Speak</span>
-                  <ChevronRight size={13} />
-                </Link>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+                  <Link href="/institute" className="c-btn c-btn--red">
+                    <span>Explore Gain Mastery Institute</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                  <Link href="/speaking" className="c-btn c-btn--dark">
+                    <span>Invite to Speak</span>
+                  </Link>
+                </div>
               </div>
 
-              {/* Authority Byline & Credentials */}
               <div style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '12px',
+                color: 'var(--text-muted)',
+                letterSpacing: '0.06em',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '16px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
-                color: 'var(--text-muted)',
-                letterSpacing: '0.08em',
-                paddingTop: '18px',
-                borderTop: '1px solid var(--line-subtle)'
+                gap: '12px',
+                paddingTop: '16px',
+                borderTop: '1px solid #1E1E1E'
               }}>
-                <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>MOSES OLADOYE</span>
-                <span style={{ width: '28px', height: '1px', background: 'var(--gold-border)' }}></span>
-                <span>GROWTH STRATEGIST &amp; HEAD COACH</span>
+                <span style={{ color: '#FFFFFF', fontWeight: 700 }}>THE MASTERY DR</span>
+                <span>/</span>
+                <span>HEAD COACH, GAIN MASTERY INSTITUTE</span>
               </div>
             </div>
 
-            {/* Hero Right: Signature Portrait Frame with Floating Credential Badge */}
+            {/* Right: Signature Portrait with PBD High-Contrast Vignette */}
             <div style={{ position: 'relative' }}>
-              <div className="photo-frame" style={{ minHeight: '520px', aspectRatio: '4/5', boxShadow: '0 24px 60px rgba(0,0,0,0.7)' }}>
+              <div style={{
+                position: 'relative',
+                minHeight: '520px',
+                aspectRatio: '4/5',
+                background: '#121212',
+                border: '1px solid #2B2B2B',
+                overflow: 'hidden'
+              }}>
                 <Image
                   src="/images/1_moses_oladoye_the_mastery_dr_e.jpg"
-                  alt="Moses Oladoye — The Mastery Dr, editorial portrait"
+                  alt="Moses Oladoye — The Mastery Dr"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
-                <div className="glaze"></div>
-                <div className="caption-tag">
-                  <span>The Mastery Dr — Editorial Portrait, Lagos</span>
-                </div>
-              </div>
-
-              {/* Floating Live Accreditation Badge */}
-              <div style={{
-                position: 'absolute',
-                bottom: '-22px',
-                left: '-18px',
-                background: 'rgba(18, 15, 11, 0.95)',
-                border: '1px solid var(--gold-border-bright)',
-                padding: '16px 20px',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 16px 36px rgba(0,0,0,0.6)',
-                zIndex: 4,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                maxWidth: '290px'
-              }}>
                 <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--gold-surface)',
-                  border: '1px solid var(--gold-primary)',
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, rgba(10,10,10,0.1) 60%, rgba(10,10,10,0.95) 100%)',
+                  pointerEvents: 'none'
+                }}></div>
+
+                <div style={{
+                  position: 'absolute',
+                  bottom: '16px',
+                  left: '16px',
+                  right: '16px',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--gold-bright)',
-                  flexShrink: 0
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
                 }}>
-                  <GraduationCap size={20} />
-                </div>
-                <div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--gold-bright)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                    Gain Mastery Institute
-                  </div>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text-primary)', marginTop: '2px' }}>
-                    1,000+ Leaders &amp; Minds Mentored
-                  </div>
+                  <span style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: '#FFFFFF'
+                  }}>
+                    Moses Oladoye — Lagos
+                  </span>
+                  <span style={{
+                    background: 'var(--pbd-red)',
+                    color: '#FFFFFF',
+                    fontSize: '10px',
+                    fontWeight: 800,
+                    padding: '3px 8px',
+                    borderRadius: '2px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em'
+                  }}>
+                    Head Coach
+                  </span>
                 </div>
               </div>
             </div>
@@ -390,165 +334,256 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          2. TONY ROBBINS STYLE LIVE PROOF MARQUEE / TICKER
+          2. PBD EXACT MANIFESTO QUOTE (.h-quote)
           ======================================================== */}
-      <div className="marquee-wrap">
-        <div className="marquee-track">
-          {[
-            '1,000+ LIVES DIRECTLY IMPACTED',
-            '20+ COUNTRIES REACHED',
-            '6 PROPRIETARY DIMENSIONS OF MASTERY',
-            'GAIN MASTERY INSTITUTE',
-            'THE BEREANS READING GUILD',
-            '100% 5-STAR COMMUNITY SATISFACTION',
-            'PROVEN LIFE STRATEGY & STEWARDSHIP',
-            '1,000+ LIVES DIRECTLY IMPACTED',
-            '20+ COUNTRIES REACHED',
-            '6 PROPRIETARY DIMENSIONS OF MASTERY',
-            'GAIN MASTERY INSTITUTE',
-            'THE BEREANS READING GUILD',
-            '100% 5-STAR COMMUNITY SATISFACTION',
-            'PROVEN LIFE STRATEGY & STEWARDSHIP',
-          ].map((text, idx) => (
-            <div key={idx} className="marquee-item">
-              <span>{text}</span>
-              <span className="marquee-dot"></span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ========================================================
-          3. THE CORE MANIFESTO (PATRICK BET-DAVID STYLE)
-          ======================================================== */}
-      <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-secondary)',
-        borderBottom: '1px solid var(--line-dark)',
-        position: 'relative'
-      }}>
-        <div className="wrap">
-          <div className="quote-manifesto">
-            <div className="quote-bracket">&ldquo;</div>
-            <p className="quote-manifesto-text">
-              No one is empty, every man is designed for something great; that greatness just needs to find expression.
-            </p>
-            <div className="quote-author">
-              <span>— Moses Oladoye</span>
-              <span style={{ margin: '0 10px', color: 'var(--line-dark)' }}>|</span>
-              <span style={{ color: 'var(--text-muted)' }}>The Mastery Dr Mandate</span>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '32px' }}>
-              <span className="badge badge-gold">Clarity over Confusion</span>
-              <span className="badge badge-emerald">Capacity over Potential</span>
-              <span className="badge badge-wine">Transformation over Information</span>
-            </div>
-          </div>
+      <section className="h-quote">
+        <div className="h-quote__inner">
+          <div className="h-quote__mark">&ldquo;</div>
+          <blockquote className="h-quote__text">
+            No one is empty.<br />
+            Every man is designed for something great.<br />
+            That greatness just needs to find expression.
+          </blockquote>
+          <p className="h-quote__attribution">- Moses Oladoye</p>
         </div>
       </section>
 
       {/* ========================================================
-          4. THE SIX DIMENSIONS (TONY ROBBINS LIFE PILLARS MATRIX)
+          3. PBD EXACT "THE STORY" TIMELINE (.h-story)
           ======================================================== */}
       <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: '#0D0D0D',
         borderBottom: '1px solid var(--line-dark)'
       }}>
         <div className="wrap">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '48px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '32px' }}>
             <div className="section-head" style={{ marginBottom: 0 }}>
-              <span className="eyebrow">The Proprietary Framework</span>
-              <h2>The Six Dimensions of Mastery</h2>
+              <span className="eyebrow">Milestones</span>
+              <h2>The Story</h2>
               <p>
-                Interconnected, not isolated. Personal growth that neglects financial intelligence or spiritual depth invariably fractures under pressure.
+                From an acute detest for stagnation to an international growth coaching and learning ecosystem.
               </p>
             </div>
 
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--gold-bright)' }}>
-              <span>SELECT A DIMENSION BELOW TO INSPECT</span>
+            {/* Timeline Previous / Next Navigation Arrows */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                onClick={() => setActiveStoryIndex(prev => (prev > 0 ? prev - 1 : storyMilestones.length - 1))}
+                aria-label="Previous story milestone"
+                className="c-btn c-btn--dark"
+                style={{ width: '42px', height: '42px', padding: 0, borderRadius: '4px' }}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => setActiveStoryIndex(prev => (prev < storyMilestones.length - 1 ? prev + 1 : 0))}
+                aria-label="Next story milestone"
+                className="c-btn c-btn--dark"
+                style={{ width: '42px', height: '42px', padding: 0, borderRadius: '4px' }}
+              >
+                <ChevronRight size={18} />
+              </button>
             </div>
           </div>
 
-          {/* Interactive Pillars Grid */}
+          {/* Horizontal Timeline Bar with Year Dots */}
+          <div className="h-story__timeline">
+            {storyMilestones.map((m, idx) => (
+              <button
+                key={m.year}
+                onClick={() => setActiveStoryIndex(idx)}
+                className={`h-story__dot ${activeStoryIndex === idx ? 'is-active' : ''}`}
+              >
+                <span>{m.year}</span>
+                <span style={{ opacity: 0.6 }}>·</span>
+                <span>{m.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active Story Card */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '24px'
+            gap: '40px',
+            alignItems: 'center',
+            background: '#141414',
+            border: '1px solid #282828',
+            padding: '40px'
           }}>
-            {pillars.map((pillar, idx) => {
-              const Icon = pillar.icon;
-              const isActive = activePillarIndex === idx;
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
+                <span style={{
+                  fontFamily: 'var(--font-hero)',
+                  fontSize: '36px',
+                  color: 'var(--pbd-red)',
+                  lineHeight: '1'
+                }}>
+                  {storyMilestones[activeStoryIndex].year}
+                </span>
+                <span style={{
+                  background: '#222222',
+                  color: '#CCCCCC',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  padding: '4px 10px',
+                  borderRadius: '2px'
+                }}>
+                  {storyMilestones[activeStoryIndex].label}
+                </span>
+              </div>
+
+              <h3 style={{
+                fontFamily: 'var(--font-hero)',
+                fontSize: 'clamp(26px, 3.2vw, 40px)',
+                lineHeight: '1.05',
+                color: '#FFFFFF',
+                marginBottom: '18px',
+                textTransform: 'uppercase'
+              }}>
+                {storyMilestones[activeStoryIndex].chapter}
+              </h3>
+
+              <p style={{
+                color: 'var(--text-secondary)',
+                fontSize: '15.5px',
+                lineHeight: '1.7',
+                marginBottom: '28px'
+              }}>
+                {storyMilestones[activeStoryIndex].body}
+              </p>
+
+              <Link href="/about" className="c-btn c-btn--white" style={{ fontSize: '12px' }}>
+                <span>Read Full Biography</span>
+                <ArrowRight size={12} />
+              </Link>
+            </div>
+
+            <div style={{
+              position: 'relative',
+              minHeight: '360px',
+              aspectRatio: '4/3',
+              background: '#0A0A0A',
+              border: '1px solid #2A2A2A',
+              overflow: 'hidden'
+            }}>
+              <Image
+                src={storyMilestones[activeStoryIndex].image}
+                alt={storyMilestones[activeStoryIndex].chapter}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.85) 100%)'
+              }}></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          4. PBD EXACT "HIS COMPANIES" / ECOSYSTEM WITH "+" TOGGLES (.h-companies)
+          ======================================================== */}
+      <section className="section-padding" style={{
+        backgroundColor: '#0A0A0A',
+        borderBottom: '1px solid var(--line-dark)'
+      }}>
+        <div className="wrap">
+          <div className="section-head">
+            <span className="eyebrow">Operating Portfolio</span>
+            <h2>His Initiatives &amp; Companies</h2>
+            <p>
+              Founder &amp; Head Growth Coach. Built around the mission to eradicate stagnation, instill discipline, and empower current and emerging leaders.
+            </p>
+          </div>
+
+          <div className="h-companies__logos-row">
+            {companies.map((co) => {
+              const isExpanded = !!expandedCompanies[co.id];
 
               return (
                 <div
-                  key={pillar.title}
-                  onClick={() => setActivePillarIndex(idx)}
-                  className="luxury-card"
-                  style={{
-                    borderLeft: `3px solid ${pillar.accent}`,
-                    borderColor: isActive ? 'var(--gold-primary)' : undefined,
-                    backgroundColor: isActive ? 'var(--bg-card-hover)' : undefined,
-                    cursor: 'pointer',
-                    boxShadow: isActive ? '0 14px 34px rgba(199, 162, 75, 0.2)' : undefined,
-                  }}
+                  key={co.id}
+                  className={`h-companies__logo-card ${isExpanded ? 'is-expanded' : ''}`}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <span style={{
-                      fontFamily: 'var(--font-display)',
-                      fontStyle: 'italic',
-                      fontSize: '32px',
-                      color: isActive ? 'var(--gold-bright)' : 'var(--gold-dim)',
-                      transition: 'var(--transition)'
-                    }}>
-                      {pillar.roman}
-                    </span>
-                    <span className="badge badge-gold">{pillar.badge}</span>
-                  </div>
+                  <button
+                    onClick={() => toggleCompany(co.id)}
+                    className="h-companies__logo-toggle"
+                    aria-label={`Toggle details for ${co.title}`}
+                  >
+                    {isExpanded ? <Minus size={14} /> : <Plus size={14} />}
+                  </button>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                    <Icon size={20} color="var(--gold-primary)" />
-                    <h3 style={{ fontSize: '22px', color: 'var(--text-primary)' }}>{pillar.title}</h3>
+                  <div style={{ marginBottom: '16px' }}>
+                    <span style={{
+                      background: 'rgba(207, 46, 46, 0.15)',
+                      color: 'var(--pbd-red)',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '10px',
+                      fontWeight: 800,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase',
+                      padding: '4px 8px',
+                      borderRadius: '2px',
+                      display: 'inline-block',
+                      marginBottom: '10px'
+                    }}>
+                      {co.badge}
+                    </span>
+                    <h3 style={{
+                      fontFamily: 'var(--font-hero)',
+                      fontSize: '24px',
+                      letterSpacing: '0.02em',
+                      color: '#FFFFFF',
+                      marginBottom: '4px'
+                    }}>
+                      {co.title}
+                    </h3>
+                    <div style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '11px',
+                      fontWeight: 700,
+                      color: 'var(--text-muted)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.06em'
+                    }}>
+                      {co.role}
+                    </div>
                   </div>
 
                   <p style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '12.5px',
-                    color: 'var(--gold-dim)',
-                    marginBottom: '14px'
+                    color: 'var(--text-secondary)',
+                    fontSize: '14px',
+                    lineHeight: '1.6',
+                    marginBottom: '18px'
                   }}>
-                    {pillar.tagline}
+                    {isExpanded ? co.fullText : co.excerpt}
                   </p>
 
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6', marginBottom: '18px' }}>
-                    {pillar.description}
-                  </p>
-
-                  {/* Deep Dive Details Shown on Selection */}
-                  <div style={{
-                    marginTop: 'auto',
-                    paddingTop: '16px',
-                    borderTop: '1px solid var(--line-subtle)',
-                    fontSize: '12px'
-                  }}>
-                    <div style={{ color: 'var(--text-muted)', marginBottom: '4px' }}>
-                      <span style={{ color: 'var(--gold-bright)', fontWeight: 700 }}>THE DIAGNOSIS: </span>
-                      {pillar.diagnosis}
-                    </div>
-                    <div style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>
-                      <span style={{ color: '#74C69D', fontWeight: 700 }}>THE SHIFT: </span>
-                      {pillar.shift}
-                    </div>
-
-                    <div style={{ marginTop: '16px' }}>
-                      <Link
-                        href={`/institute/course/${pillar.courseSlug}`}
-                        className="btn btn-outline btn-sm"
-                        style={{ width: '100%', justifyContent: 'space-between' }}
-                      >
-                        <span>Master This Dimension</span>
-                        <ArrowRight size={12} />
-                      </Link>
-                    </div>
+                  <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid #222222' }}>
+                    <Link
+                      href={co.link}
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '11.5px',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        color: 'var(--pbd-red)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      <span>Learn More</span>
+                      <ArrowRight size={12} />
+                    </Link>
                   </div>
                 </div>
               );
@@ -558,192 +593,151 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          5. THE MASTERY ECOSYSTEM & FLYWHEEL (PATRICK BET-DAVID STYLE)
+          5. PBD EXACT "THE FLYWHEEL" (.h-flywheel)
           ======================================================== */}
       <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: '#0D0D0D',
         borderBottom: '1px solid var(--line-dark)'
       }}>
         <div className="wrap">
           <div className="section-head">
-            <span className="eyebrow">The Integrated Ecosystem</span>
-            <h2>How The Mastery Flywheel Compounds</h2>
+            <span className="eyebrow">The Compounding Flywheel</span>
+            <h2>The Mastery Flywheel</h2>
             <p>
-              Moses Oladoye did not build isolated efforts. He created a self-reinforcing flywheel where reading fuels thinking, thinking informs strategy, and strategy builds generational capacity.
+              Moses didn&apos;t build separate initiatives. He built a system where each one feeds the next. The result is a compounding flywheel that accelerates every year.
             </p>
           </div>
 
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '24px',
-            marginBottom: '40px'
-          }}>
-            {ecosystem.map((node) => (
-              <div key={node.id} className="flywheel-node">
-                <div style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '24px',
-                  fontWeight: 700,
-                  color: 'var(--gold-dim)',
-                  marginBottom: '10px'
-                }}>
-                  {node.id}
-                </div>
-                <span className="badge badge-gold" style={{ marginBottom: '14px' }}>
-                  {node.badge}
-                </span>
-                <h3 style={{ fontSize: '20px', marginBottom: '8px' }}>
-                  {node.title}
-                </h3>
-                <div style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '11px',
-                  color: 'var(--gold-bright)',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  marginBottom: '12px'
-                }}>
-                  {node.role}
-                </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13.5px', lineHeight: '1.6', marginBottom: '20px' }}>
-                  {node.description}
-                </p>
-                <Link
-                  href={node.href}
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11.5px',
-                    color: 'var(--gold-bright)',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px'
-                  }}
-                >
-                  <span>Explore Channel</span>
-                  <ArrowRight size={12} />
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          {/* Visual Compounding Cycle Banner */}
-          <div style={{
-            background: 'linear-gradient(135deg, #13100C 0%, #1A150F 100%)',
-            border: '1px solid var(--gold-border)',
-            padding: '30px',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '24px'
-          }}>
-            <div style={{ maxWidth: '600px' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--gold-bright)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
-                The Continuous Compounding Loop
-              </div>
-              <div style={{ fontSize: '17px', fontWeight: 600, color: 'var(--text-primary)' }}>
-                Deep Reading (Bereans) &rarr; Structured Education (Institute) &rarr; Corporate Application (Speaking) &rarr; Generational Stewardship
-              </div>
-            </div>
-
-            <Link href="/institute" className="btn btn-gold btn-sm">
-              <span>Enter The Flywheel</span>
-              <ArrowRight size={13} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          6. THE STORY & MILESTONES (PATRICK BET-DAVID TIMELINE STYLE)
-          ======================================================== */}
-      <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-primary)',
-        borderBottom: '1px solid var(--line-dark)'
-      }}>
-        <div className="wrap">
-          <div className="section-head">
-            <span className="eyebrow">The Origin Story</span>
-            <h2>Formative Milestones</h2>
-            <p>
-              From a deep detest for ignorance and wasted human potential to an international growth coaching and learning ecosystem.
-            </p>
-          </div>
-
-          {/* Interactive Year Controls (PBD Timeline Slider) */}
-          <div className="story-timeline-controls" style={{ marginBottom: '36px' }}>
-            {milestones.map((m, idx) => (
-              <button
-                key={m.year}
-                onClick={() => setActiveStoryIndex(idx)}
-                className={`story-tab-btn ${activeStoryIndex === idx ? 'active' : ''}`}
-              >
-                <span>{m.year}</span>
-                <span style={{ opacity: 0.6 }}>·</span>
-                <span>{m.label}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Active Milestone Card */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '48px',
-            alignItems: 'center',
-            background: 'var(--bg-secondary)',
-            border: '1px solid var(--gold-border)',
+            background: '#141414',
+            border: '1px solid #282828',
             padding: '40px',
             position: 'relative'
           }}>
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                <span style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '28px',
-                  fontWeight: 700,
-                  color: 'var(--gold-bright)'
-                }}>
-                  {milestones[activeStoryIndex].year}
-                </span>
-                <span className="badge badge-gold">
-                  {milestones[activeStoryIndex].tag}
-                </span>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '24px',
+              marginBottom: '32px'
+            }}>
+              {[
+                { step: '01', title: 'Deep Reading', sub: 'The Bereans Reading Guild', desc: 'Cultivating mental rigor and critical analysis of foundational literature.' },
+                { step: '02', title: 'Structured Education', sub: 'Gain Mastery Institute', desc: 'Formalizing knowledge into actionable curriculum and certification tracks.' },
+                { step: '03', title: 'Executive Clarity', sub: 'Corporate Speaking & Seminars', desc: 'Mobilizing organizations, universities, and churches with strategic models.' },
+                { step: '04', title: 'Generational Impact', sub: 'Strategic Briefings & Advisory', desc: 'Compounding influence and building things that outlast the builder.' },
+              ].map((n) => (
+                <div key={n.step} style={{ borderLeft: '2px solid var(--pbd-red)', paddingLeft: '16px' }}>
+                  <div style={{
+                    fontFamily: 'var(--font-hero)',
+                    fontSize: '32px',
+                    color: 'var(--pbd-red)',
+                    lineHeight: '1'
+                  }}>
+                    {n.step}
+                  </div>
+                  <h4 style={{ fontFamily: 'var(--font-hero)', fontSize: '20px', color: '#FFFFFF', marginTop: '6px' }}>
+                    {n.title}
+                  </h4>
+                  <div style={{ fontSize: '11px', fontWeight: 700, color: '#CCCCCC', textTransform: 'uppercase', margin: '4px 0 8px' }}>
+                    {n.sub}
+                  </div>
+                  <p style={{ fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.55' }}>
+                    {n.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '16px',
+              paddingTop: '24px',
+              borderTop: '1px solid #242424'
+            }}>
+              <div style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: '#CCCCCC' }}>
+                Every book read feeds a teaching. Every teaching feeds a course. Every course builds a leader.
               </div>
 
-              <h3 style={{ fontSize: 'clamp(24px, 3vw, 36px)', lineHeight: '1.2', marginBottom: '18px' }}>
-                {milestones[activeStoryIndex].headline}
-              </h3>
+              <Link href="/institute" className="c-btn c-btn--red" style={{ fontSize: '12px' }}>
+                <span>Enter The Institute Engine</span>
+                <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <p style={{
-                color: 'var(--text-secondary)',
-                fontSize: '15.5px',
-                lineHeight: '1.7',
-                marginBottom: '28px'
-              }}>
-                {milestones[activeStoryIndex].text}
-              </p>
+      {/* ========================================================
+          6. PBD "BY THE NUMBERS" STATISTICAL GRID (.h-vt)
+          ======================================================== */}
+      <section className="section-padding" style={{
+        backgroundColor: '#000000',
+        borderBottom: '1px solid var(--line-dark)'
+      }}>
+        <div className="wrap">
+          <div className="section-head">
+            <span className="eyebrow">Proven Scale</span>
+            <h2>By The Numbers</h2>
+            <p>
+              Tested across cohorts, conferences, digital campuses, and corporate boardrooms.
+            </p>
+          </div>
 
-              <div style={{ display: 'flex', gap: '14px' }}>
-                <Link href="/about" className="btn btn-outline btn-sm">
-                  <span>Read Moses&apos; Full Biography</span>
-                  <ArrowRight size={12} />
-                </Link>
+          <div className="h-stats-grid">
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                1,000<span className="accent">+</span>
+              </div>
+              <div className="h-stat-label">
+                Minds Directly Mentored &amp; Coached
               </div>
             </div>
 
-            <div className="photo-frame" style={{ minHeight: '360px', aspectRatio: '4/3' }}>
-              <Image
-                src={milestones[activeStoryIndex].image}
-                alt={milestones[activeStoryIndex].headline}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
-              />
-              <div className="glaze"></div>
-              <div className="caption-tag">
-                <span>{milestones[activeStoryIndex].label} — {milestones[activeStoryIndex].year}</span>
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                20<span className="accent">+</span>
+              </div>
+              <div className="h-stat-label">
+                Countries Reached Globally
+              </div>
+            </div>
+
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                6
+              </div>
+              <div className="h-stat-label">
+                Proprietary Dimensions of Mastery
+              </div>
+            </div>
+
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                100<span className="accent">%</span>
+              </div>
+              <div className="h-stat-label">
+                5-Star Community Feedback
+              </div>
+            </div>
+
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                12<span className="accent">+</span>
+              </div>
+              <div className="h-stat-label">
+                Certification Curriculum Modules
+              </div>
+            </div>
+
+            <div className="h-stat-box">
+              <div className="h-stat-number">
+                52<span className="accent">+</span>
+              </div>
+              <div className="h-stat-label">
+                Weekly Strategic Briefings Annually
               </div>
             </div>
           </div>
@@ -751,204 +745,22 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          7. MEDIA & MASTERCLASS SPOTLIGHT (MEL ROBBINS PODCAST STYLE)
+          7. PBD EXACT "BESTSELLING CURRICULUM & COURSES" (.h-books / .h-events)
           ======================================================== */}
       <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: '#0A0A0A',
         borderBottom: '1px solid var(--line-dark)'
       }}>
         <div className="wrap">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '48px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '40px' }}>
             <div className="section-head" style={{ marginBottom: 0 }}>
-              <span className="eyebrow eyebrow-wine">Featured Media &amp; Masterclass</span>
-              <h2>Listen &amp; Learn On-Demand</h2>
+              <span className="eyebrow">Flagship Education</span>
+              <h2>Curriculum &amp; Certification</h2>
               <p>
-                Actionable teachings and strategic breakdowns curated for busy executives, builders, and ambitious minds.
+                Structured, rigorous educational programs from Gain Mastery Institute covering purpose, finance, leadership, and personal systems.
               </p>
             </div>
-            <Link href="/resources" className="btn btn-outline btn-sm">
-              <span>All Field Notes &amp; Audio</span>
-              <ArrowRight size={13} />
-            </Link>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '30px'
-          }}>
-            {/* Mel Robbins Style Interactive Audio Spotlight */}
-            <div className="media-player-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span className="badge badge-wine">Masterclass Audio Note</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)' }}>
-                  32 Minutes · HQ Audio
-                </span>
-              </div>
-
-              <div>
-                <h3 style={{ fontSize: '22px', lineHeight: '1.25', marginBottom: '10px' }}>
-                  The Architecture of Intentional Growth: Escaping the Drift
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.6' }}>
-                  Moses Oladoye breaks down why intelligence and zeal fail without a calibrated personal growth system, and how to execute with ruthlessness.
-                </p>
-              </div>
-
-              {/* Simulated Waveform & Play Control */}
-              <div style={{
-                background: 'rgba(7, 6, 5, 0.75)',
-                border: '1px solid var(--line-dark)',
-                padding: '16px',
-                borderRadius: 'var(--radius-sm)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px'
-              }}>
-                <button
-                  onClick={() => setAudioPlaying(!audioPlaying)}
-                  style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '50%',
-                    background: audioPlaying ? 'var(--gold-bright)' : 'var(--gold-primary)',
-                    border: 'none',
-                    color: '#070605',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    flexShrink: 0
-                  }}
-                  aria-label={audioPlaying ? 'Pause audio' : 'Play audio'}
-                >
-                  {audioPlaying ? <Volume2 size={18} /> : <Play size={18} fill="#070605" style={{ marginLeft: '2px' }} />}
-                </button>
-
-                <div className="waveform-container" style={{ flex: 1 }}>
-                  {[12, 24, 18, 28, 8, 30, 20, 14, 26, 10, 22, 16, 28, 14, 20, 32, 18, 12, 24, 16, 22, 30, 14, 18, 26, 12, 20, 28].map((h, i) => (
-                    <div
-                      key={i}
-                      className="wave-bar"
-                      style={{
-                        height: audioPlaying ? undefined : `${h}px`,
-                        animationPlayState: audioPlaying ? 'running' : 'paused'
-                      }}
-                    ></div>
-                  ))}
-                </div>
-
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--gold-bright)' }}>
-                  {audioPlaying ? 'PLAYING' : 'READY'}
-                </span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '12px' }}>
-                <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                  By Moses Oladoye · Recorded in Lagos
-                </span>
-                <Link href="/resources" style={{ fontSize: '12px', color: 'var(--gold-bright)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                  <span>Read Transcript</span>
-                  <ArrowUpRight size={13} />
-                </Link>
-              </div>
-            </div>
-
-            {/* Video Lecture Preview Card */}
-            <div className="luxury-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ position: 'relative', height: '220px', width: '100%' }}>
-                <Image
-                  src="/images/6_moses_oladoye_speaking_at_an_e.jpg"
-                  alt="Keynote Lecture Session"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'rgba(7, 6, 5, 0.4)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <button
-                    onClick={() => setVideoModalOpen(true)}
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '50%',
-                      background: 'rgba(199, 162, 75, 0.9)',
-                      border: '2px solid #FFFFFF',
-                      color: '#070605',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      boxShadow: '0 0 24px rgba(199, 162, 75, 0.6)'
-                    }}
-                    aria-label="Play keynote lecture video"
-                  >
-                    <Play size={22} fill="#070605" style={{ marginLeft: '3px' }} />
-                  </button>
-                </div>
-                <div style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 2 }}>
-                  <span className="badge badge-gold">Keynote Lecture</span>
-                </div>
-              </div>
-
-              <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '10px' }}>
-                  Leadership Summit · 48 Minutes
-                </div>
-                <h3 style={{ fontSize: '20px', lineHeight: '1.3', marginBottom: '10px' }}>
-                  The Principles of Long-Horizon Capital and Moral Authority
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13.5px', lineHeight: '1.6', marginBottom: '18px' }}>
-                  Addressing university leaders and builders on why private discipline always determines public sustainability.
-                </p>
-                <button
-                  onClick={() => setVideoModalOpen(true)}
-                  style={{
-                    marginTop: 'auto',
-                    background: 'none',
-                    border: 'none',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11px',
-                    color: 'var(--gold-bright)',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    cursor: 'pointer',
-                    padding: 0
-                  }}
-                >
-                  <span>Watch Keynote Clip</span>
-                  <ArrowRight size={12} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          8. GAIN MASTERY INSTITUTE (COURSES SHOWCASE)
-          ======================================================== */}
-      <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-primary)',
-        borderBottom: '1px solid var(--line-dark)'
-      }}>
-        <div className="wrap">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '48px' }}>
-            <div className="section-head" style={{ marginBottom: 0 }}>
-              <span className="eyebrow">Official Digital LMS</span>
-              <h2>Gain Mastery Institute</h2>
-              <p>
-                Structured, rigorous educational tracks with quizzes, assignments, and verifiable certificates of completion.
-              </p>
-            </div>
-            <Link href="/institute" className="btn btn-outline btn-sm">
+            <Link href="/institute" className="c-btn c-btn--dark">
               <span>View All Courses ({SEED_COURSES.length})</span>
               <ArrowRight size={13} />
             </Link>
@@ -957,11 +769,16 @@ export default function HomePage() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '30px'
+            gap: '24px'
           }}>
             {featuredCourses.map((course) => (
-              <div key={course.id} className="luxury-card" style={{ padding: 0, overflow: 'hidden' }}>
-                <div style={{ position: 'relative', height: '220px', width: '100%' }}>
+              <div key={course.id} style={{
+                background: '#141414',
+                border: '1px solid #282828',
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
+                <div style={{ position: 'relative', height: '220px', width: '100%', background: '#0A0A0A' }}>
                   <Image
                     src={course.thumbnailUrl}
                     alt={course.title}
@@ -970,39 +787,56 @@ export default function HomePage() {
                     style={{ objectFit: 'cover' }}
                   />
                   <div style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 2 }}>
-                    <span className="badge badge-gold">{course.category}</span>
+                    <span style={{
+                      background: 'var(--pbd-red)',
+                      color: '#FFFFFF',
+                      fontSize: '10px',
+                      fontWeight: 800,
+                      padding: '4px 8px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      borderRadius: '2px'
+                    }}>
+                      {course.category}
+                    </span>
                   </div>
                   <div style={{ position: 'absolute', bottom: '14px', right: '14px', zIndex: 2 }}>
                     <span style={{
-                      backgroundColor: 'rgba(7, 6, 5, 0.9)',
-                      color: 'var(--gold-bright)',
-                      fontFamily: 'var(--font-mono)',
+                      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                      color: '#FFFFFF',
+                      fontFamily: 'var(--font-body)',
                       fontSize: '11px',
+                      fontWeight: 700,
                       padding: '4px 8px',
-                      border: '1px solid var(--gold-border)'
+                      border: '1px solid #333333'
                     }}>
                       {course.level}
                     </span>
                   </div>
                 </div>
 
-                <div style={{ padding: '26px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div style={{ padding: '26px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '12px' }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Clock size={13} color="var(--gold-primary)" />
+                      <Clock size={13} color="var(--pbd-red)" />
                       {course.durationHours} Hours
                     </span>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Users size={13} color="var(--gold-primary)" />
+                      <Users size={13} color="var(--pbd-red)" />
                       {course.studentsCount} Students
                     </span>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginLeft: 'auto', color: 'var(--gold-bright)' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginLeft: 'auto', color: '#FFFFFF' }}>
                       <Star size={13} fill="var(--gold-primary)" color="var(--gold-primary)" />
                       {course.rating}
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: '20px', lineHeight: '1.28', marginBottom: '12px' }}>
+                  <h3 style={{
+                    fontFamily: 'var(--font-hero)',
+                    fontSize: '24px',
+                    lineHeight: '1.1',
+                    marginBottom: '10px'
+                  }}>
                     <Link href={`/institute/course/${course.slug}`}>{course.title}</Link>
                   </h3>
 
@@ -1013,22 +847,22 @@ export default function HomePage() {
                   <div style={{
                     marginTop: 'auto',
                     paddingTop: '18px',
-                    borderTop: '1px solid var(--line-dark)',
+                    borderTop: '1px solid #222222',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between'
                   }}>
                     <div>
                       <span style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '18px',
-                        fontWeight: 700,
-                        color: course.isFree ? '#74C69D' : 'var(--gold-bright)'
+                        fontFamily: 'var(--font-hero)',
+                        fontSize: '24px',
+                        letterSpacing: '0.04em',
+                        color: course.isFree ? '#74C69D' : '#FFFFFF'
                       }}>
                         {course.isFree ? 'FREE' : `₦${course.price.toLocaleString()}`}
                       </span>
                     </div>
-                    <Link href={`/institute/course/${course.slug}`} className="btn btn-gold btn-sm">
+                    <Link href={`/institute/course/${course.slug}`} className="c-btn c-btn--red" style={{ padding: '9px 18px', fontSize: '11px' }}>
                       <span>Enroll</span>
                       <ArrowRight size={12} />
                     </Link>
@@ -1041,150 +875,23 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          9. THE BEREANS READING GUILD (BOOK OF THE MONTH SPOTLIGHT)
+          8. PBD EXACT "WHAT LEADERS SAY" CAROUSEL (.h-leaders)
           ======================================================== */}
       <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-secondary)',
-        borderBottom: '1px solid var(--line-dark)'
-      }}>
-        <div className="wrap">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '54px',
-            alignItems: 'center'
-          }}>
-            <div className="photo-frame" style={{ minHeight: '380px', aspectRatio: '4/3' }}>
-              <Image
-                src="/images/3_moses_teaching_on_productivity.jpg"
-                alt="Moses teaching on intellectual curiosity and deep reading"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
-              />
-              <div className="glaze"></div>
-              <div className="caption-tag">
-                <span>The Bereans: Intellectual Curiosity &amp; Depth</span>
-              </div>
-            </div>
-
-            <div>
-              <span className="eyebrow eyebrow-wine">Intellectual Mastery</span>
-              <h2 style={{ fontSize: 'clamp(28px, 3.8vw, 44px)', margin: '16px 0 20px' }}>
-                The Bereans Reading Community
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.7', marginBottom: '22px' }}>
-                Inspired by the biblical Bereans who examined every premise with analytical diligence, this reading community exists to help determined people cultivate the transformative habit of deep, structured reading.
-              </p>
-
-              {/* Current Book Feature Box */}
-              <div style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--gold-border)',
-                padding: '22px',
-                marginBottom: '28px',
-                position: 'relative'
-              }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10.5px', color: 'var(--gold-bright)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '6px' }}>
-                  Current Cohort Reading Selection
-                </div>
-                <div style={{ fontSize: '19px', fontWeight: 600, color: 'var(--text-primary)' }}>
-                  {SEED_BEREANS_BOOK.title}
-                </div>
-                <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '4px' }}>
-                  By {SEED_BEREANS_BOOK.author} · Virtual Weekly Cohort Sessions &amp; Reading Audits
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <Link href="/bereans/apply" className="btn btn-gold">
-                  <span>Apply to Join The Bereans</span>
-                  <ArrowRight size={14} />
-                </Link>
-                <Link href="/bereans" className="btn btn-outline">
-                  <span>Learn How Cohorts Work</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          10. KEYNOTE & CORPORATE SPEAKING SECTION
-          ======================================================== */}
-      <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-primary)',
-        borderBottom: '1px solid var(--line-dark)'
-      }}>
-        <div className="wrap">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '54px',
-            alignItems: 'center'
-          }}>
-            <div>
-              <span className="eyebrow">Speaking &amp; Thought Leadership</span>
-              <h2 style={{ fontSize: 'clamp(28px, 3.8vw, 44px)', margin: '16px 0 20px' }}>
-                Invite The Mastery Dr to teach your room.
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.7', marginBottom: '24px' }}>
-                Moses Oladoye is regularly invited to keynote conferences, address executive leadership summits, university congresses, and strategic corporate retreats across Nigeria, Africa, and internationally.
-              </p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
-                {['Conferences', 'Corporate Seminars', 'Churches', 'Universities', 'Executive Panels', 'Youth Summits'].map(item => (
-                  <span key={item} className="badge badge-gold">{item}</span>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <Link href="/speaking/invite" className="btn btn-gold">
-                  <span>Submit Speaking Invitation</span>
-                  <ArrowRight size={14} />
-                </Link>
-                <Link href="/speaking" className="btn btn-outline">
-                  <span>View Keynote Philosophy</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="photo-frame" style={{ minHeight: '440px', aspectRatio: '4/5' }}>
-              <Image
-                src="/images/6_moses_oladoye_speaking_at_an_e.jpg"
-                alt="Moses Oladoye speaking at an executive conference"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
-              />
-              <div className="glaze"></div>
-              <div className="caption-tag">
-                <span>Keynote Delivery on Diligence &amp; Leadership</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          11. VERIFIED PROOF WALL & COMMUNITY REVIEWS
-          ======================================================== */}
-      <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: '#0D0D0D',
         borderBottom: '1px solid var(--line-dark)'
       }}>
         <div className="wrap">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '40px' }}>
             <div className="section-head" style={{ marginBottom: 0 }}>
-              <span className="eyebrow">Verified Proof &amp; Transformations</span>
-              <h2>Voices from the Community</h2>
+              <span className="eyebrow">Endorsements &amp; Proof</span>
+              <h2>What Leaders Say</h2>
               <p>
-                Authentic testimonies from young executives, builders, students, and attendees across The Mastery Dr ecosystem.
+                Testimonials from executives, community leaders, and students transformed by The Mastery Dr framework.
               </p>
             </div>
 
-            {/* Category Filter Tabs */}
+            {/* Filter Tabs */}
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {[
                 { id: 'all', label: 'All Reviews' },
@@ -1195,17 +902,8 @@ export default function HomePage() {
                 <button
                   key={f.id}
                   onClick={() => setReviewFilter(f.id as any)}
-                  style={{
-                    background: reviewFilter === f.id ? 'var(--gold-surface)' : 'transparent',
-                    border: `1px solid ${reviewFilter === f.id ? 'var(--gold-primary)' : 'var(--line-dark)'}`,
-                    color: reviewFilter === f.id ? 'var(--gold-bright)' : 'var(--text-muted)',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11px',
-                    padding: '6px 14px',
-                    borderRadius: 'var(--radius-sm)',
-                    cursor: 'pointer',
-                    transition: 'var(--transition)'
-                  }}
+                  className={`c-btn ${reviewFilter === f.id ? 'c-btn--red' : 'c-btn--dark'}`}
+                  style={{ padding: '7px 14px', fontSize: '11px' }}
                 >
                   {f.label}
                 </button>
@@ -1213,32 +911,46 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Testimonial Cards Grid */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '24px'
           }}>
             {filteredReviews.map((rev) => (
-              <div key={rev.id} className="luxury-card" style={{ borderTop: '2px solid var(--gold-primary)' }}>
+              <div key={rev.id} style={{
+                background: '#141414',
+                border: '1px solid #282828',
+                borderTop: '2px solid var(--pbd-red)',
+                padding: '30px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                   <div style={{ display: 'flex', gap: '3px' }}>
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={14} fill="var(--gold-primary)" color="var(--gold-primary)" />
+                      <Star key={i} size={14} fill="var(--pbd-red)" color="var(--pbd-red)" />
                     ))}
                   </div>
-                  <span className="badge badge-gold" style={{ fontSize: '9px' }}>Verified</span>
+                  <span style={{
+                    fontSize: '10px',
+                    fontWeight: 700,
+                    color: 'var(--text-muted)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em'
+                  }}>
+                    Verified Attendee
+                  </span>
                 </div>
 
-                <p style={{ color: 'var(--text-primary)', fontSize: '14.5px', lineHeight: '1.7', marginBottom: '20px' }}>
+                <p style={{ color: '#F0F0F0', fontSize: '15px', lineHeight: '1.65', marginBottom: '22px' }}>
                   &ldquo;{rev.comment}&rdquo;
                 </p>
 
-                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--line-dark)' }}>
-                  <div style={{ fontWeight: 600, fontSize: '14px', color: 'var(--gold-bright)' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #242424' }}>
+                  <div style={{ fontWeight: 700, fontSize: '15px', color: '#FFFFFF' }}>
                     {rev.reviewerName}
                   </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)' }}>
+                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
                     {rev.reviewerTitle}
                   </div>
                 </div>
@@ -1246,9 +958,9 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '44px' }}>
-            <Link href="/reviews" className="btn btn-outline btn-sm">
-              <span>Read All Community Reviews &amp; Submit Yours</span>
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link href="/reviews" className="c-btn c-btn--dark">
+              <span>Read All Community Reviews</span>
               <ArrowRight size={13} />
             </Link>
           </div>
@@ -1256,40 +968,123 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          12. FINAL GRAND AUTHORITY CTA (TONY ROBBINS STYLE)
+          9. PBD EXACT "SPEAKING & HIGH-STAKES ROOMS" (.h-events)
           ======================================================== */}
       <section className="section-padding" style={{
-        backgroundColor: 'var(--bg-primary)',
-        textAlign: 'center',
-        position: 'relative'
+        backgroundColor: '#0A0A0A',
+        borderBottom: '1px solid var(--line-dark)'
       }}>
-        {/* Glow */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '400px',
-          background: 'radial-gradient(ellipse, rgba(199, 162, 75, 0.12) 0%, transparent 70%)',
-          pointerEvents: 'none'
-        }}></div>
+        <div className="wrap">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '54px',
+            alignItems: 'center'
+          }}>
+            <div>
+              <span className="eyebrow">Keynote Delivery</span>
+              <h2 style={{ fontFamily: 'var(--font-hero)', fontSize: 'clamp(36px, 5.5vw, 60px)', margin: '12px 0 20px', lineHeight: '1' }}>
+                Invite The Mastery Dr to teach your room.
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.7', marginBottom: '24px' }}>
+                Moses Oladoye is regularly invited to keynote conferences, address church leadership summits, university congresses, and conduct strategic corporate growth seminars across Nigeria and internationally.
+              </p>
 
-        <div className="wrap" style={{ position: 'relative', zIndex: 2 }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
+                {['Executive Panels', 'Corporate Seminars', 'Churches', 'Universities', 'Youth Congresses', 'Leadership Retreats'].map(item => (
+                  <span key={item} style={{
+                    background: '#1A1A1A',
+                    border: '1px solid #333333',
+                    color: '#CCCCCC',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    padding: '5px 12px',
+                    borderRadius: '2px'
+                  }}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                <Link href="/speaking/invite" className="c-btn c-btn--red">
+                  <span>Submit Speaking Invitation</span>
+                  <ArrowRight size={13} />
+                </Link>
+                <Link href="/speaking" className="c-btn c-btn--dark">
+                  <span>View Keynote Philosophy</span>
+                </Link>
+              </div>
+            </div>
+
+            <div style={{
+              position: 'relative',
+              minHeight: '440px',
+              aspectRatio: '4/5',
+              background: '#121212',
+              border: '1px solid #2B2B2B',
+              overflow: 'hidden'
+            }}>
+              <Image
+                src="/images/6_moses_oladoye_speaking_at_an_e.jpg"
+                alt="Moses Oladoye speaking at an executive summit"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, transparent 65%, rgba(10,10,10,0.95) 100%)'
+              }}></div>
+              <div style={{
+                position: 'absolute',
+                bottom: '16px',
+                left: '16px',
+                fontFamily: 'var(--font-body)',
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: '#FFFFFF'
+              }}>
+                Keynote Delivery on Diligence &amp; Leadership
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          10. PBD EXACT FINAL CALL TO ACTION
+          ======================================================== */}
+      <section className="section-padding" style={{
+        backgroundColor: '#000000',
+        textAlign: 'center'
+      }}>
+        <div className="wrap">
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-            <span className="eyebrow" style={{ justifyContent: 'center' }}>Take The First Step</span>
-            <h2 style={{ fontSize: 'clamp(32px, 4.8vw, 56px)', margin: '20px 0 24px', letterSpacing: '-0.02em' }}>
-              Stop drifting. Start building — <em className="text-gold-gradient">on purpose.</em>
+            <span className="eyebrow" style={{ justifyContent: 'center' }}>Take The Next Step</span>
+            <h2 style={{
+              fontFamily: 'var(--font-hero)',
+              fontSize: 'clamp(44px, 7vw, 84px)',
+              margin: '16px 0 20px',
+              lineHeight: '0.95'
+            }}>
+              Stop drifting. Start building — <span style={{ color: 'var(--pbd-red)' }}>on purpose.</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '16.5px', lineHeight: '1.7', marginBottom: '36px' }}>
-              Whether you are an individual seeking structured clarity, an organization seeking a transformative keynote speaker, or a reader ready to train at the Institute, your growth starts today.
+              Whether you are an ambitious professional seeking structured clarity, an organization seeking a keynote speaker, or a reader ready to train at the Institute, the journey starts today.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <Link href="/institute" className="btn btn-gold">
-                <span>Explore Gain Mastery Institute</span>
+              <Link href="/institute" className="c-btn c-btn--red">
+                <span>Explore The Institute</span>
                 <ArrowRight size={14} />
               </Link>
-              <Link href="/speaking/invite" className="btn btn-outline">
+              <Link href="/speaking/invite" className="c-btn c-btn--white">
                 <span>Invite Moses to Speak</span>
               </Link>
             </div>
@@ -1298,37 +1093,23 @@ export default function HomePage() {
       </section>
 
       {/* ========================================================
-          VIDEO TEASER MODAL (PATRICK BET-DAVID STYLE)
+          11. PBD EXACT VIDEO LIGHTBOX MODAL (video-lightbox)
           ======================================================== */}
       {videoModalOpen && (
-        <div className="modal-backdrop" onClick={() => setVideoModalOpen(false)}>
-          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span className="badge badge-gold">The Vision</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-muted)' }}>
-                  Moses Oladoye on The Mandate
-                </span>
-              </div>
-              <button
-                onClick={() => setVideoModalOpen(false)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--text-primary)',
-                  cursor: 'pointer',
-                  padding: '4px'
-                }}
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-            </div>
+        <div className="video-lightbox" onClick={() => setVideoModalOpen(false)}>
+          <div className="video-lightbox__frame" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="video-lightbox__close"
+              onClick={() => setVideoModalOpen(false)}
+              aria-label="Close video"
+            >
+              &times;
+            </button>
 
-            <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', height: 0, overflow: 'hidden', background: '#000000', border: '1px solid var(--gold-border)' }}>
+            <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
               <iframe
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="The Mastery Dr Vision Presentation"
+                title="The Mastery Dr Vision Story"
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -1337,18 +1118,31 @@ export default function HomePage() {
                   height: '100%',
                   border: 'none'
                 }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; encrypted-media"
                 allowFullScreen
               ></iframe>
             </div>
 
-            <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-              <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>
-                Gain Mastery Institute · Purpose, Discipline &amp; Strategy
+            <div style={{
+              padding: '20px 24px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '12px',
+              background: '#141414',
+              borderTop: '1px solid #2B2B2B'
+            }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-hero)', fontSize: '20px', color: '#FFFFFF' }}>
+                  Moses Oladoye — The Origin Mandate
+                </div>
+                <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                  Gain Mastery Institute · Lagos · London · Global Diaspora
+                </div>
               </div>
-              <Link href="/institute" className="btn btn-gold btn-sm">
-                <span>View Full Curriculum</span>
-                <ArrowRight size={12} />
+              <Link href="/institute" className="c-btn c-btn--red" style={{ padding: '8px 16px', fontSize: '11px' }}>
+                <span>Explore Institute Programs</span>
               </Link>
             </div>
           </div>

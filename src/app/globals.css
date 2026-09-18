@@ -1,72 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Manrope:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
 /* ========================================================
-   THE MASTERY DR — MASTER LUXURY DESIGN SYSTEM
-   Inspired by Patrick Bet-David, Mel Robbins & Tony Robbins
+   THE MASTERY DR — PATRICK BET-DAVID MOGUL DESIGN SYSTEM
+   Exact PBD Aesthetic: High-Contrast Obsidian, Crimson Red & Bold Condensed Typography
    ======================================================== */
 
 :root {
-  /* Surfaces & Backgrounds (Dark Mode Authority) */
-  --bg-primary: #070605;
-  --bg-secondary: #0D0B08;
-  --bg-tertiary: #14110D;
-  --bg-card: #120F0B;
-  --bg-card-hover: #1A1611;
-  --bg-glass: rgba(13, 11, 8, 0.88);
-  --bg-glass-card: rgba(18, 15, 11, 0.72);
+  /* PBD Onyx & Obsidian Dark Palette */
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-tertiary: #161616;
+  --bg-card: #141414;
+  --bg-card-hover: #1C1C1C;
+  --bg-glass: rgba(10, 10, 10, 0.92);
 
-  /* Gold Palette (Refined Metallic Gold & Gradients) */
-  --gold-primary: #C7A24B;
-  --gold-bright: #E8C879;
-  --gold-dim: #9E7D31;
-  --gold-border: rgba(199, 162, 75, 0.28);
-  --gold-border-bright: rgba(199, 162, 75, 0.65);
-  --gold-glow: rgba(199, 162, 75, 0.15);
-  --gold-surface: rgba(199, 162, 75, 0.08);
-  --gold-gradient: linear-gradient(135deg, #F3DE9C 0%, #C7A24B 50%, #8E6B23 100%);
-  --gold-text-gradient: linear-gradient(135deg, #FFFFFF 20%, #E8C879 60%, #C7A24B 100%);
+  /* PBD High-Impact Brand Accents */
+  --pbd-red: #CF2E2E;
+  --pbd-red-bright: #E50914;
+  --pbd-red-subtle: rgba(207, 46, 46, 0.15);
+  --pbd-red-border: rgba(207, 46, 46, 0.4);
 
-  /* Accents */
-  --wine: #7C1F3E;
-  --wine-bright: #A62953;
-  --wine-subtle: rgba(124, 31, 62, 0.22);
-  --wine-border: rgba(124, 31, 62, 0.45);
-  --emerald: #1B4332;
-  --emerald-subtle: rgba(27, 67, 50, 0.28);
-  --emerald-bright: #2D6A4F;
+  /* Luxury Authority Gold / Amber */
+  --gold-primary: #D4AF37;
+  --gold-bright: #F5D77F;
+  --gold-dim: #997B28;
+  --gold-border: rgba(212, 175, 55, 0.3);
+  --gold-glow: rgba(212, 175, 55, 0.15);
 
-  /* Typography / Foreground */
-  --text-primary: #F8F5EE;
-  --text-secondary: #CBC2AF;
-  --text-muted: #8F8572;
-  --text-faint: #4E473B;
-  --line-dark: rgba(199, 162, 75, 0.18);
-  --line-subtle: rgba(248, 245, 238, 0.07);
+  /* Clean High-Contrast Monochrome */
+  --text-white: #FFFFFF;
+  --text-primary: #F5F5F5;
+  --text-secondary: #B3B3B3;
+  --text-muted: #737373;
+  --text-faint: #404040;
+  --line-dark: #222222;
+  --line-subtle: rgba(255, 255, 255, 0.08);
 
-  /* Functional Status */
-  --status-success: #2D6A4F;
-  --status-warning: #C79A3B;
-  --status-error: #9B2226;
-  --status-info: #2B5C8F;
-
-  /* Typography Stacks */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography Stacks (PBD Exact Font Family Pairings) */
+  --font-hero: 'Bebas Neue', 'Inter Tight', sans-serif;
+  --font-display: 'Inter Tight', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Space Mono', monospace;
 
   /* Layout Boundaries */
-  --max-width: 1240px;
+  --max-width: 1260px;
   --edge: clamp(20px, 5vw, 64px);
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-  --card-shadow-hover: 0 16px 36px -12px rgba(199, 162, 75, 0.18);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-full: 9999px;
+  --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
 }
 
 /* ========================================================
-   BASE RESETS & ELEMENT STYLES
+   BASE RESETS & GLOBAL STYLES
    ======================================================== */
 
 * {
@@ -93,29 +80,28 @@ body {
   position: relative;
 }
 
-/* Luxury Custom Scrollbar */
+/* PBD Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #25201A;
+  background: #2A2A2A;
   border-radius: 4px;
-  border: 1px solid var(--gold-border);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dim);
+  background: var(--pbd-red);
 }
 
 ::selection {
-  background: var(--gold-primary);
-  color: var(--bg-primary);
+  background: var(--pbd-red);
+  color: #FFFFFF;
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold-primary);
+  outline: 2px solid var(--pbd-red);
   outline-offset: 3px;
 }
 
@@ -132,62 +118,49 @@ img {
 }
 
 /* ========================================================
-   TYPOGRAPHY SYSTEM
+   PBD TYPOGRAPHY RULES
    ======================================================== */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--text-white);
 }
 
-em, .italic {
-  font-style: italic;
-  font-weight: 500;
-  color: var(--gold-bright);
-}
-
-.text-gold-gradient {
-  background: var(--gold-text-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.font-bebas {
+  font-family: var(--font-hero);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 700;
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-bright);
+  color: var(--pbd-red);
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .eyebrow::before {
   content: "";
-  width: 22px;
-  height: 2px;
-  background: var(--gold-primary);
+  width: 18px;
+  height: 2.5px;
+  background: var(--pbd-red);
   display: inline-block;
 }
 
-.eyebrow-wine {
-  color: #F080A0;
+.eyebrow-gold {
+  color: var(--gold-bright);
 }
-
-.eyebrow-wine::before {
-  background: var(--wine);
-}
-
-.eyebrow-emerald {
-  color: #52B788;
-}
-
-.eyebrow-emerald::before {
-  background: var(--emerald);
+.eyebrow-gold::before {
+  background: var(--gold-primary);
 }
 
 /* ========================================================
@@ -202,118 +175,47 @@ em, .italic {
 }
 
 .section-padding {
-  padding: 110px 0;
+  padding: 96px 0;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 70px 0;
+    padding: 64px 0;
   }
 }
 
 .section-head {
-  max-width: 680px;
-  margin-bottom: 54px;
+  max-width: 720px;
+  margin-bottom: 50px;
 }
 
 .section-head h2 {
-  font-size: clamp(30px, 4.2vw, 48px);
-  margin-top: 16px;
-  line-height: 1.12;
+  font-family: var(--font-hero);
+  font-size: clamp(36px, 5.5vw, 64px);
+  letter-spacing: 0.02em;
+  margin-top: 12px;
+  line-height: 1;
 }
 
 .section-head p {
   color: var(--text-secondary);
   margin-top: 14px;
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 /* ========================================================
-   SIGNATURE PHOTO FRAME (HERO & EDITORIAL ELEMENT)
+   PBD EXACT BUTTON ARCHETYPES
    ======================================================== */
 
-.photo-frame {
-  position: relative;
-  border: 1px solid var(--gold-border);
-  background: var(--bg-secondary);
-  overflow: hidden;
-  transition: var(--transition);
-}
-
-.photo-frame::before,
-.photo-frame::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--gold-primary);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.photo-frame::before {
-  top: 10px;
-  left: 10px;
-  border-top: 2px solid var(--gold-primary);
-  border-left: 2px solid var(--gold-primary);
-}
-
-.photo-frame::after {
-  bottom: 10px;
-  right: 10px;
-  border-bottom: 2px solid var(--gold-primary);
-  border-right: 2px solid var(--gold-primary);
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  filter: contrast(1.05) saturate(0.95) brightness(0.98);
-  transition: transform 0.6s ease;
-}
-
-.photo-frame:hover img {
-  transform: scale(1.02);
-}
-
-.photo-frame .glaze {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(165deg, rgba(199, 162, 75, 0.12), rgba(7, 6, 5, 0.45) 70%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.photo-frame .caption-tag {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 3;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-  padding: 16px 20px;
-  background: linear-gradient(0deg, rgba(7, 6, 5, 0.95), transparent);
-}
-
-/* ========================================================
-   BUTTONS & ACTIONS
-   ======================================================== */
-
-.btn {
+.c-btn {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
@@ -323,155 +225,276 @@ em, .italic {
   cursor: pointer;
   transition: var(--transition);
   text-decoration: none;
-  position: relative;
-  overflow: hidden;
+  line-height: 1.2;
 }
 
-.btn-gold {
-  background: var(--gold-gradient);
-  color: #070605;
-  border-color: var(--gold-bright);
-  font-weight: 800;
-  box-shadow: 0 4px 18px rgba(199, 162, 75, 0.25);
-}
-
-.btn-gold:hover {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E8C879 50%, #C7A24B 100%);
+/* PBD White Button */
+.c-btn--white {
+  background: #FFFFFF;
+  color: #000000;
   border-color: #FFFFFF;
-  box-shadow: 0 6px 26px rgba(199, 162, 75, 0.45);
+  font-weight: 800;
+}
+.c-btn--white:hover {
+  background: #E5E5E5;
+  border-color: #E5E5E5;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
 }
 
-.btn-outline {
-  background: rgba(14, 12, 9, 0.4);
-  color: var(--text-primary);
-  border-color: var(--gold-border);
-  backdrop-filter: blur(8px);
+/* PBD Dark / Outline Button */
+.c-btn--dark {
+  background: #181818;
+  color: #FFFFFF;
+  border-color: #333333;
+}
+.c-btn--dark:hover {
+  background: #242424;
+  border-color: #666666;
+  transform: translateY(-2px);
+  color: #FFFFFF;
 }
 
-.btn-outline:hover {
-  background: var(--gold-surface);
+/* PBD Red Accent Button */
+.c-btn--red {
+  background: var(--pbd-red);
+  color: #FFFFFF;
+  border-color: var(--pbd-red);
+  font-weight: 800;
+}
+.c-btn--red:hover {
+  background: var(--pbd-red-bright);
+  border-color: var(--pbd-red-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(207, 46, 46, 0.45);
+}
+
+/* PBD Gold Accent Button */
+.c-btn--gold {
+  background: var(--gold-primary);
+  color: #000000;
   border-color: var(--gold-primary);
-  color: var(--gold-bright);
+  font-weight: 800;
+}
+.c-btn--gold:hover {
+  background: var(--gold-bright);
+  border-color: var(--gold-bright);
   transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
 }
 
-.btn-ghost {
-  background: transparent;
-  color: var(--text-secondary);
-  border-color: transparent;
-  padding: 12px 18px;
+/* PBD Play Trigger Button */
+.h-hero__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-white);
+  transition: var(--transition);
+  padding: 6px 0;
 }
-
-.btn-ghost:hover {
-  color: var(--gold-bright);
-  background: rgba(255, 255, 255, 0.04);
+.h-hero__play:hover .h-hero__play-btn {
+  transform: scale(1.08);
+  border-color: var(--pbd-red);
+  background: var(--pbd-red);
+  color: #FFFFFF;
 }
-
-.btn-sm {
-  padding: 9px 18px;
-  font-size: 11px;
+.h-hero__play-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--line-subtle);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  transition: var(--transition);
+}
+.h-hero__play-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ========================================================
-   CARDS, TILES & SURFACES
+   PBD EXACT QUOTE MANIFESTO SECTION (.h-quote)
    ======================================================== */
 
-.luxury-card {
+.h-quote {
+  background: #000000;
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  padding: 60px 20px;
+  text-align: center;
+}
+.h-quote__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+.h-quote__mark {
+  font-family: var(--font-hero);
+  font-size: 64px;
+  line-height: 0.5;
+  color: var(--pbd-red);
+  opacity: 0.8;
+  display: inline-block;
+  user-select: none;
+}
+.h-quote__text {
+  font-family: var(--font-hero);
+  font-size: clamp(28px, 4.5vw, 48px);
+  line-height: 1.15;
+  color: var(--text-white);
+  letter-spacing: 0.02em;
+  margin: 18px 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.h-quote__attribution {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* ========================================================
+   PBD EXACT "THE STORY" SECTION (.h-story)
+   ======================================================== */
+
+.h-story__timeline {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--line-dark);
+  scrollbar-width: none;
+}
+.h-story__timeline::-webkit-scrollbar {
+  display: none;
+}
+.h-story__dot {
+  background: transparent;
+  border: 1px solid #2B2B2B;
+  color: #7A7A7A;
+  font-family: var(--font-hero);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.h-story__dot:hover {
+  border-color: #666;
+  color: #FFF;
+}
+.h-story__dot.is-active {
+  background: var(--pbd-red);
+  border-color: var(--pbd-red);
+  color: #FFFFFF;
+}
+
+/* ========================================================
+   PBD EXACT "HIS COMPANIES" SECTION WITH "+" TOGGLES
+   ======================================================== */
+
+.h-companies__logos-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.h-companies__logo-card {
   background: var(--bg-card);
-  border: 1px solid var(--line-dark);
-  padding: 34px 30px;
+  border: 1px solid #262626;
+  padding: 30px;
   position: relative;
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--card-shadow);
 }
-
-.luxury-card:hover {
-  border-color: var(--gold-border-bright);
+.h-companies__logo-card:hover {
+  border-color: #444444;
   background: var(--bg-card-hover);
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-3px);
 }
-
-.badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  display: inline-flex;
+.h-companies__logo-card.is-expanded {
+  border-color: var(--pbd-red);
+}
+.h-companies__logo-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #242424;
+  border: 1px solid #333333;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.badge-gold {
-  background: var(--gold-surface);
-  border: 1px solid var(--gold-border);
-  color: var(--gold-bright);
-}
-
-.badge-wine {
-  background: var(--wine-subtle);
-  border: 1px solid var(--wine-border);
-  color: #F080A0;
-}
-
-.badge-emerald {
-  background: var(--emerald-subtle);
-  border: 1px solid rgba(27, 67, 50, 0.6);
-  color: #74C69D;
-}
-
-/* ========================================================
-   FORM CONTROLS & INPUTS
-   ======================================================== */
-
-.form-group {
-  margin-bottom: 22px;
-}
-
-.form-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-  background: rgba(14, 12, 9, 0.9);
-  border: 1px solid var(--line-dark);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 15px;
-  padding: 12px 16px;
-  border-radius: var(--radius-sm);
+  justify-content: center;
+  cursor: pointer;
   transition: var(--transition);
 }
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 0 2px var(--gold-glow);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--text-faint);
+.h-companies__logo-toggle:hover {
+  background: var(--pbd-red);
+  border-color: var(--pbd-red);
 }
 
 /* ========================================================
-   SITE HEADER & NAVIGATION
+   PBD "BY THE NUMBERS" STATISTICAL GRID (.h-vt)
+   ======================================================== */
+
+.h-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.h-stat-box {
+  background: var(--bg-card);
+  border: 1px solid #262626;
+  padding: 36px 28px;
+  transition: var(--transition);
+}
+.h-stat-box:hover {
+  border-color: var(--pbd-red);
+  transform: translateY(-2px);
+}
+.h-stat-number {
+  font-family: var(--font-hero);
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 0.95;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+.h-stat-number span.accent {
+  color: var(--pbd-red);
+}
+.h-stat-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+/* ========================================================
+   SITE HEADER & NAVIGATION (PBD STYLE)
    ======================================================== */
 
 header.site-header {
@@ -490,30 +513,35 @@ header.site-header {
 .nav-wrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 14px var(--edge);
+  padding: 18px var(--edge);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.wordmark {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-primary);
+.wordmark-pbd {
+  font-family: var(--font-hero);
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--text-white);
   text-decoration: none;
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  gap: 6px;
   line-height: 1;
 }
 
-.wordmark span.sub {
-  font-family: var(--font-mono);
+.wordmark-pbd span.red {
+  color: var(--pbd-red);
+}
+
+.wordmark-pbd span.sub-tag {
+  font-family: var(--font-body);
   font-size: 9px;
-  letter-spacing: 0.22em;
-  color: var(--gold-primary);
-  margin-top: 6px;
-  font-weight: 400;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
 
 nav.main-nav {
@@ -523,8 +551,9 @@ nav.main-nav {
 }
 
 nav.main-nav a.nav-link {
-  font-size: 11.5px;
-  font-weight: 600;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -532,315 +561,47 @@ nav.main-nav a.nav-link {
   padding: 6px 0;
 }
 
-nav.main-nav a.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  height: 2px;
-  background: var(--gold-primary);
-  transition: right 0.25s ease;
-}
-
 nav.main-nav a.nav-link:hover {
-  color: var(--text-primary);
+  color: var(--text-white);
 }
 
-nav.main-nav a.nav-link:hover::after,
-nav.main-nav a.nav-link.active::after {
-  right: 0;
-}
-
-/* ========================================================
-   TONY ROBBINS STYLE TICKER / MARQUEE
-   ======================================================== */
-
-.marquee-wrap {
-  width: 100%;
-  overflow: hidden;
-  background: var(--bg-tertiary);
-  border-top: 1px solid var(--line-dark);
-  border-bottom: 1px solid var(--line-dark);
-  position: relative;
-  white-space: nowrap;
-}
-
-.marquee-track {
-  display: inline-flex;
-  animation: ticker 32s linear infinite;
-  padding: 16px 0;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding: 0 32px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-}
-
-.marquee-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold-primary);
-  box-shadow: 0 0 8px var(--gold-bright);
-}
-
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+nav.main-nav a.nav-link.active {
+  color: var(--pbd-red);
 }
 
 /* ========================================================
-   PATRICK BET-DAVID STYLE QUOTE MANIFESTO
+   MODAL LIGHTBOX (PBD STYLE)
    ======================================================== */
 
-.quote-manifesto {
-  position: relative;
-  max-width: 920px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.quote-bracket {
-  font-family: var(--font-display);
-  font-size: clamp(60px, 8vw, 110px);
-  line-height: 0.5;
-  color: var(--gold-primary);
-  opacity: 0.35;
-  user-select: none;
-}
-
-.quote-manifesto-text {
-  font-family: var(--font-display);
-  font-size: clamp(26px, 4vw, 44px);
-  line-height: 1.25;
-  color: var(--text-primary);
-  margin: 20px 0 28px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.quote-author {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-bright);
-}
-
-/* ========================================================
-   PBD STYLE STORY & MILESTONES TIMELINE
-   ======================================================== */
-
-.story-timeline-controls {
-  display: flex;
-  overflow-x: auto;
-  gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line-dark);
-  scrollbar-width: none;
-}
-.story-timeline-controls::-webkit-scrollbar {
-  display: none;
-}
-
-.story-tab-btn {
-  background: transparent;
-  border: 1px solid var(--line-dark);
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.story-tab-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--gold-border);
-}
-
-.story-tab-btn.active {
-  background: var(--gold-surface);
-  border-color: var(--gold-primary);
-  color: var(--gold-bright);
-  font-weight: 700;
-  box-shadow: 0 0 14px var(--gold-glow);
-}
-
-/* ========================================================
-   MEL ROBBINS STYLE AUDIO / MEDIA PLAYER SPOTLIGHT
-   ======================================================== */
-
-.media-player-card {
-  background: var(--bg-card);
-  border: 1px solid var(--gold-border);
-  padding: 28px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.waveform-container {
-  display: flex;
-  align-items: center;
-  gap: 3.5px;
-  height: 36px;
-  padding: 0 10px;
-}
-
-.wave-bar {
-  width: 3px;
-  background: var(--gold-primary);
-  border-radius: 2px;
-  animation: waveBounce 1.4s ease-in-out infinite alternate;
-}
-
-.wave-bar:nth-child(2n) {
-  animation-delay: 0.2s;
-  background: var(--gold-bright);
-}
-.wave-bar:nth-child(3n) {
-  animation-delay: 0.4s;
-  background: #A62953;
-}
-.wave-bar:nth-child(4n) {
-  animation-delay: 0.6s;
-}
-
-@keyframes waveBounce {
-  0% {
-    height: 6px;
-    opacity: 0.35;
-  }
-  100% {
-    height: 30px;
-    opacity: 1;
-  }
-}
-
-/* ========================================================
-   ECOSYSTEM & FLYWHEEL SECTION
-   ======================================================== */
-
-.flywheel-node {
-  background: var(--bg-card);
-  border: 1px solid var(--line-dark);
-  padding: 28px 24px;
-  position: relative;
-  transition: var(--transition);
-}
-
-.flywheel-node:hover {
-  border-color: var(--gold-primary);
-  transform: translateY(-2px);
-  background: var(--bg-card-hover);
-}
-
-.flywheel-node.active {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 24px var(--gold-glow);
-  background: var(--bg-card-hover);
-}
-
-/* ========================================================
-   MODAL DIALOGS
-   ======================================================== */
-
-.modal-backdrop {
+.video-lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(7, 6, 5, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
 }
 
-.modal-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--gold-border-bright);
-  max-width: 720px;
-  width: 100%;
-  padding: 36px;
+.video-lightbox__frame {
   position: relative;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 900px;
+  background: #000000;
+  border: 1px solid #333333;
 }
 
-/* ========================================================
-   GRID UTILITIES
-   ======================================================== */
-
-.grid-2 {
-  display: grid;
-  gap: 32px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .grid-2 {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.grid-3 {
-  display: grid;
-  gap: 32px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.grid-4 {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 640px) {
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.video-lightbox__close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
 }

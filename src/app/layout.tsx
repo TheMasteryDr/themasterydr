@@ -61,7 +61,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <div className="site-main-wrap" style={{ paddingTop: '106px', minHeight: '80vh' }}>
+        <div className="site-main-wrap" style={{ paddingTop: '74px', minHeight: '80vh' }}>
           {children}
         </div>
         <Footer />

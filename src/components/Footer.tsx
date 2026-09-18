@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Send, ArrowUpRight, CheckCircle2, MessageCircle, ArrowUp, ShieldCheck, Mail } from 'lucide-react';
+import { Send, ArrowUpRight, CheckCircle2, MessageCircle, ArrowUp, Mail, ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -22,94 +22,87 @@ export const Footer: React.FC = () => {
 
   return (
     <footer style={{
-      background: 'var(--bg-secondary)',
+      background: '#070707',
       borderTop: '1px solid var(--line-dark)',
       padding: '80px 0 36px',
       position: 'relative'
     }}>
       <div className="wrap">
-        {/* Mel Robbins & PBD Style "The Mastery Dispatch" VIP Newsletter Module */}
+        {/* PBD Exact Newsletter / VIP Dispatch Box */}
         <div style={{
-          background: 'linear-gradient(135deg, #13100C 0%, #1B1610 100%)',
-          border: '1px solid var(--gold-border)',
+          background: '#121212',
+          border: '1px solid #262626',
           padding: '48px var(--edge)',
           marginBottom: '64px',
           position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 20px 48px rgba(0,0,0,0.5)'
+          borderRadius: 'var(--radius-sm)'
         }}>
-          {/* Subtle Ambient Radial Glow */}
-          <div style={{
-            position: 'absolute',
-            top: '-50px',
-            right: '-50px',
-            width: '300px',
-            height: '300px',
-            background: 'radial-gradient(circle, rgba(199, 162, 75, 0.12) 0%, transparent 70%)',
-            pointerEvents: 'none'
-          }}></div>
-
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '32px',
-            position: 'relative',
-            zIndex: 2
+            gap: '32px'
           }}>
-            <div style={{ maxWidth: '560px' }}>
+            <div style={{ maxWidth: '580px' }}>
               <div className="eyebrow" style={{ marginBottom: '10px' }}>
-                <span>The Mastery Dispatch · Weekly VIP Letter</span>
+                <span>The Mastery Dispatch · Strategic Briefing</span>
               </div>
-              <h3 style={{ fontSize: 'clamp(22px, 2.6vw, 32px)', lineHeight: '1.2', color: 'var(--text-primary)' }}>
-                One honest letter on discipline, strategic execution, and purpose.
+              <h3 style={{
+                fontFamily: 'var(--font-hero)',
+                fontSize: 'clamp(28px, 3.8vw, 44px)',
+                lineHeight: '1.05',
+                color: '#FFFFFF',
+                letterSpacing: '0.02em'
+              }}>
+                Get The Strategic Playbook Sent Weekly.
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '14.5px', marginTop: '10px', lineHeight: '1.65' }}>
-                Join 1,000+ intentional minds worldwide. Includes immediate access to Moses Oladoye&apos;s <em>&ldquo;Six Dimensions of Mastery&rdquo;</em> self-assessment blueprint. No spam or vanity advice.
+                Direct, unfiltered letters on discipline, capital stewardship, purpose, and quarterly execution from Moses Oladoye. No fluff.
               </p>
             </div>
 
             <div style={{ flex: '1', minWidth: '280px', maxWidth: '440px' }}>
               {subscribed ? (
                 <div style={{
-                  background: 'rgba(27, 67, 50, 0.4)',
-                  border: '1px solid var(--emerald-bright)',
+                  background: 'rgba(207, 46, 46, 0.15)',
+                  border: '1px solid var(--pbd-red)',
                   padding: '18px 22px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  color: '#A7F3D0',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '12.5px'
+                  color: '#FFFFFF',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '13px'
                 }}>
-                  <CheckCircle2 size={22} color="#34D399" />
+                  <CheckCircle2 size={22} color="var(--pbd-red)" />
                   <div>
-                    <div style={{ fontWeight: 700 }}>You are officially on the Dispatch list.</div>
-                    <div style={{ fontSize: '11px', opacity: 0.85, marginTop: '2px' }}>Check your inbox for your welcome framework.</div>
+                    <div style={{ fontWeight: 700 }}>You are officially subscribed.</div>
+                    <div style={{ fontSize: '11px', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                      Watch your inbox for your first strategic briefing.
+                    </div>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleNewsletter}>
                   <div style={{
                     display: 'flex',
-                    background: 'rgba(7, 6, 5, 0.8)',
-                    border: '1px solid var(--gold-border)',
+                    background: '#0A0A0A',
+                    border: '1px solid #333333',
                     borderRadius: 'var(--radius-sm)',
-                    overflow: 'hidden',
-                    transition: 'var(--transition)'
+                    overflow: 'hidden'
                   }}>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your private email address"
+                      placeholder="Enter your email address"
                       required
                       style={{
                         flex: 1,
                         background: 'transparent',
                         border: 'none',
-                        color: 'var(--text-primary)',
+                        color: '#FFFFFF',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         padding: '14px 16px',
@@ -118,19 +111,12 @@ export const Footer: React.FC = () => {
                     />
                     <button
                       type="submit"
-                      className="btn-gold"
+                      className="c-btn c-btn--red"
                       style={{
                         border: 'none',
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        padding: '0 22px',
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '11px',
-                        letterSpacing: '0.1em',
-                        textTransform: 'uppercase',
-                        fontWeight: 700
+                        borderRadius: 0,
+                        padding: '0 24px',
+                        fontSize: '12px'
                       }}
                     >
                       <span>Join</span>
@@ -142,12 +128,12 @@ export const Footer: React.FC = () => {
                     alignItems: 'center',
                     gap: '6px',
                     marginTop: '10px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '10px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '11px',
                     color: 'var(--text-muted)'
                   }}>
-                    <ShieldCheck size={12} color="var(--gold-primary)" />
-                    <span>Strict confidentiality. Unsubscribe at any time with one click.</span>
+                    <ShieldCheck size={13} color="var(--pbd-red)" />
+                    <span>Zero spam. Strict confidentiality. Unsubscribe anytime.</span>
                   </div>
                 </form>
               )}
@@ -155,137 +141,110 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer Navigation Columns */}
+        {/* PBD Multi-Column Footer Grid */}
         <div style={{
           display: 'grid',
           gap: '48px',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
           paddingBottom: '54px',
           borderBottom: '1px solid var(--line-dark)'
         }}>
-          {/* Brand Column */}
-          <div style={{ maxWidth: '340px' }}>
-            <Link href="/" className="wordmark" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
-              <div style={{
-                width: '36px',
-                height: '36px',
-                border: '1.5px solid var(--gold-primary)',
-                background: 'linear-gradient(145deg, rgba(199, 162, 75, 0.15), rgba(7, 6, 5, 0.9))',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 700,
-                fontSize: '14px',
-                color: 'var(--gold-bright)'
-              }}>
-                MD
-              </div>
-              <div>
-                <div style={{ fontSize: '18px', fontWeight: 600, color: 'var(--text-primary)' }}>
-                  The Mastery Dr
-                </div>
-                <span className="sub" style={{ display: 'block', fontSize: '8.5px', letterSpacing: '0.2em' }}>
-                  MOSES OLADOYE
-                </span>
-              </div>
+          {/* Brand Info */}
+          <div style={{ maxWidth: '320px' }}>
+            <Link href="/" className="wordmark-pbd">
+              <span>MOSES</span>
+              <span className="red">OLADOYE</span>
             </Link>
-
             <p style={{
               color: 'var(--text-secondary)',
               fontSize: '14px',
-              marginTop: '18px',
+              marginTop: '16px',
               lineHeight: '1.65'
             }}>
-              A comprehensive personal brand and educational ecosystem committed to moving individuals from stagnation to clarity, consistent growth, and purposeful impact.
+              Personal development platform, Gain Mastery Institute, and strategic advisory dedicated to turning human potential into tested, expressed capacity.
             </p>
-
-            <div style={{ marginTop: '22px' }}>
+            <div style={{ marginTop: '20px' }}>
               <a
                 href="https://t.me/masterymasterminds"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline btn-sm"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '11px' }}
+                className="c-btn c-btn--dark"
+                style={{ fontSize: '11px', padding: '10px 16px', gap: '8px' }}
               >
-                <MessageCircle size={14} color="var(--gold-primary)" />
-                <span>The Mastery Masterminds (Telegram)</span>
+                <MessageCircle size={14} color="var(--pbd-red)" />
+                <span>Join Telegram Community</span>
               </a>
             </div>
           </div>
 
-          {/* Navigation Column 1: Ecosystem */}
+          {/* Column 1: Ecosystem */}
           <div>
-            <h5 style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'var(--gold-primary)',
-              marginBottom: '18px'
+            <h4 style={{
+              fontFamily: 'var(--font-hero)',
+              fontSize: '18px',
+              letterSpacing: '0.04em',
+              color: '#FFFFFF',
+              marginBottom: '16px'
             }}>
               Ecosystem
-            </h5>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px' }}>
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13.5px' }}>
               <Link href="/about" style={{ color: 'var(--text-secondary)' }}>About Moses Oladoye</Link>
               <Link href="/institute" style={{ color: 'var(--text-secondary)' }}>Gain Mastery Institute</Link>
               <Link href="/bereans" style={{ color: 'var(--text-secondary)' }}>The Bereans Reading Club</Link>
-              <Link href="/speaking" style={{ color: 'var(--text-secondary)' }}>Speaking Engagements</Link>
-              <Link href="/mighty-men" style={{ color: 'var(--text-muted)' }}>Mighty Men of Mastery (Private)</Link>
+              <Link href="/speaking" style={{ color: 'var(--text-secondary)' }}>Keynote Engagements</Link>
+              <Link href="/mighty-men" style={{ color: 'var(--text-muted)' }}>Mighty Men Fraternity</Link>
             </div>
           </div>
 
-          {/* Navigation Column 2: Knowledge & Proof */}
+          {/* Column 2: Media & Resources */}
           <div>
-            <h5 style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'var(--gold-primary)',
-              marginBottom: '18px'
+            <h4 style={{
+              fontFamily: 'var(--font-hero)',
+              fontSize: '18px',
+              letterSpacing: '0.04em',
+              color: '#FFFFFF',
+              marginBottom: '16px'
             }}>
-              Knowledge &amp; Trust
-            </h5>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px' }}>
+              Media &amp; Blueprints
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13.5px' }}>
               <Link href="/resources" style={{ color: 'var(--text-secondary)' }}>Articles &amp; Field Notes</Link>
-              <Link href="/resources" style={{ color: 'var(--text-secondary)' }}>Video &amp; Audio Teachings</Link>
-              <Link href="/reviews" style={{ color: 'var(--text-secondary)' }}>Public Reviews &amp; Stories</Link>
-              <Link href="/verify/certificate/sample" style={{ color: 'var(--text-secondary)' }}>Certificate Verification</Link>
-              <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Coaching Inquiry</Link>
+              <Link href="/resources" style={{ color: 'var(--text-secondary)' }}>Audio &amp; Video Sessions</Link>
+              <Link href="/reviews" style={{ color: 'var(--text-secondary)' }}>What Leaders Say</Link>
+              <Link href="/contact" style={{ color: 'var(--text-secondary)' }}>Advisory Inquiry</Link>
             </div>
           </div>
 
-          {/* Navigation Column 3: Presence */}
+          {/* Column 3: Channels */}
           <div>
-            <h5 style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              color: 'var(--gold-primary)',
-              marginBottom: '18px'
+            <h4 style={{
+              fontFamily: 'var(--font-hero)',
+              fontSize: '18px',
+              letterSpacing: '0.04em',
+              color: '#FFFFFF',
+              marginBottom: '16px'
             }}>
-              Official Channels
-            </h5>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px' }}>
-              <a
-                href="https://instagram.com/themasterydr"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-              >
-                <span>Instagram — @themasterydr</span>
-                <ArrowUpRight size={13} color="var(--gold-primary)" />
-              </a>
+              Channels
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13.5px' }}>
               <a
                 href="https://youtube.com/@themasterydr"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                <span>YouTube — @themasterydr</span>
-                <ArrowUpRight size={13} color="var(--gold-primary)" />
+                <span>YouTube</span>
+                <ArrowUpRight size={13} color="var(--pbd-red)" />
+              </a>
+              <a
+                href="https://instagram.com/themasterydr"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+              >
+                <span>Instagram</span>
+                <ArrowUpRight size={13} color="var(--pbd-red)" />
               </a>
               <a
                 href="https://tiktok.com/@themasterydr"
@@ -293,21 +252,21 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 style={{ color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                <span>TikTok — @themasterydr</span>
-                <ArrowUpRight size={13} color="var(--gold-primary)" />
+                <span>TikTok</span>
+                <ArrowUpRight size={13} color="var(--pbd-red)" />
               </a>
               <a
                 href="mailto:moses@gainmastery.org"
-                style={{ color: 'var(--gold-bright)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                style={{ color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                <Mail size={13} />
+                <Mail size={13} color="var(--pbd-red)" />
                 <span>moses@gainmastery.org</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Metadata, Copyright & Back to Top */}
+        {/* Bottom Copyright & Back to Top */}
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -315,34 +274,36 @@ export const Footer: React.FC = () => {
           alignItems: 'center',
           gap: '16px',
           paddingTop: '28px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '11px',
-          color: 'var(--text-muted)',
-          letterSpacing: '0.04em'
+          fontFamily: 'var(--font-body)',
+          fontSize: '12px',
+          color: 'var(--text-muted)'
         }}>
           <div>
-            <span>© {new Date().getFullYear()} THE MASTERY DR. MOSES OLADOYE. ALL RIGHTS RESERVED.</span>
+            <span>&copy; {new Date().getFullYear()} Moses Oladoye. All rights reserved.</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <span>LAGOS · LONDON · GLOBAL DIASPORA</span>
             <button
               onClick={scrollToTop}
               style={{
-                background: 'rgba(199, 162, 75, 0.1)',
-                border: '1px solid var(--gold-border)',
-                color: 'var(--gold-bright)',
-                padding: '6px 12px',
+                background: '#1A1A1A',
+                border: '1px solid #333333',
+                color: '#FFFFFF',
+                padding: '6px 14px',
                 borderRadius: 'var(--radius-sm)',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '10.5px',
+                fontFamily: 'var(--font-body)',
+                fontSize: '11px',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
                 transition: 'var(--transition)'
               }}
-              aria-label="Scroll back to top"
+              aria-label="Back to top"
             >
               <span>Back to Top</span>
               <ArrowUp size={12} />
