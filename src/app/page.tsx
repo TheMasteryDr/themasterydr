@@ -194,8 +194,8 @@ export default function HomePage() {
               {/* Giant Stacked 2-Line Heading */}
               <h1 style={{
                 fontFamily: 'var(--font-hero)',
-                fontSize: 'clamp(54px, 8.5vw, 108px)',
-                lineHeight: '0.88',
+                fontSize: 'clamp(44px, 12vw, 108px)',
+                lineHeight: '0.9',
                 letterSpacing: '0.02em',
                 color: '#FFFFFF',
                 marginBottom: '20px',
@@ -404,12 +404,12 @@ export default function HomePage() {
           {/* Active Story Card */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '40px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '32px',
             alignItems: 'center',
             background: '#141414',
             border: '1px solid #282828',
-            padding: '40px'
+            padding: 'clamp(20px, 4vw, 40px)'
           }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
@@ -768,7 +768,7 @@ export default function HomePage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '24px'
           }}>
             {featuredCourses.map((course) => (
@@ -913,7 +913,7 @@ export default function HomePage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '24px'
           }}>
             {filteredReviews.map((rev) => (
@@ -977,8 +977,8 @@ export default function HomePage() {
         <div className="wrap">
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '54px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '48px',
             alignItems: 'center'
           }}>
             <div>
@@ -1098,13 +1098,41 @@ export default function HomePage() {
       {videoModalOpen && (
         <div className="video-lightbox" onClick={() => setVideoModalOpen(false)}>
           <div className="video-lightbox__frame" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="video-lightbox__close"
-              onClick={() => setVideoModalOpen(false)}
-              aria-label="Close video"
-            >
-              &times;
-            </button>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '12px 18px',
+              background: '#141414',
+              borderBottom: '1px solid #2B2B2B'
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-hero)',
+                fontSize: '18px',
+                letterSpacing: '0.04em',
+                color: '#FFFFFF'
+              }}>
+                THE ORIGIN STORY
+              </span>
+              <button
+                onClick={() => setVideoModalOpen(false)}
+                aria-label="Close video"
+                style={{
+                  background: '#222222',
+                  border: '1px solid #333333',
+                  color: '#FFFFFF',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer'
+                }}
+              >
+                <X size={18} color="var(--pbd-red)" />
+              </button>
+            </div>
 
             <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
               <iframe

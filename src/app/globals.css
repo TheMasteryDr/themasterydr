@@ -413,13 +413,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .h-companies__logos-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
+@media (min-width: 640px) {
+  .h-companies__logos-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .h-companies__logos-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
 .h-companies__logo-card {
   background: var(--bg-card);
   border: 1px solid #262626;
-  padding: 30px;
+  padding: clamp(20px, 4vw, 30px);
   position: relative;
   transition: var(--transition);
   display: flex;
@@ -434,8 +447,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .h-companies__logo-toggle {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -461,13 +474,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .h-stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 480px) {
+  .h-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .h-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
 }
 .h-stat-box {
   background: var(--bg-card);
   border: 1px solid #262626;
-  padding: 36px 28px;
+  padding: clamp(24px, 4vw, 36px) clamp(20px, 3vw, 28px);
   transition: var(--transition);
 }
 .h-stat-box:hover {
@@ -521,7 +545,7 @@ header.site-header {
 
 .wordmark-pbd {
   font-family: var(--font-hero);
-  font-size: 26px;
+  font-size: clamp(20px, 5.5vw, 26px);
   letter-spacing: 0.04em;
   color: var(--text-white);
   text-decoration: none;
@@ -529,6 +553,7 @@ header.site-header {
   align-items: baseline;
   gap: 6px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .wordmark-pbd span.red {
@@ -542,6 +567,13 @@ header.site-header {
   letter-spacing: 0.18em;
   color: var(--text-muted);
   text-transform: uppercase;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .wordmark-pbd span.sub-tag {
+    display: inline;
+  }
 }
 
 nav.main-nav {
