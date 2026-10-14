@@ -1,18 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { Send, CheckCircle2, Mail, MessageSquare, ArrowRight } from 'lucide-react';
+import { Mail, MessageSquare, MapPin, Send, CheckCircle2, Instagram, Facebook, Sparkles } from 'lucide-react';
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    inquiryType: 'general',
-    subject: '',
-    message: '',
-  });
-
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('Personal Coaching Inquiry');
+  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -20,178 +15,285 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
       setSubmitted(true);
-    }, 800);
+      setLoading(false);
+    }, 600);
   };
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-primary)', padding: '60px 0 100px' }}>
-      <div className="wrap" style={{ maxWidth: '900px' }}>
-        <div style={{ marginBottom: '44px' }}>
-          <span className="eyebrow">Connect &amp; Inquire</span>
-          <h1 style={{ fontSize: 'clamp(32px, 4.5vw, 54px)', margin: '14px 0 16px' }}>
-            Start a <em>Conversation.</em>
-          </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '16.5px', maxWidth: '640px', lineHeight: '1.7' }}>
-            For executive growth coaching inquiries, institutional partnerships, speaking engagements, or general feedback, connect directly with our office.
-          </p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '40px',
-          alignItems: 'start'
-        }}>
-          {/* Contact Form */}
-          <div className="luxury-card" style={{ padding: '36px' }}>
-            {submitted ? (
-              <div style={{ textAlign: 'center', padding: '30px 10px' }}>
-                <CheckCircle2 size={48} color="var(--gold-primary)" style={{ margin: '0 auto 16px' }} />
-                <h3 style={{ fontSize: '22px', marginBottom: '12px' }}>Message Dispatched</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: '1.6' }}>
-                  Thank you, <strong>{form.name}</strong>. Your inquiry has been routed to our communications desk. We typically respond within 24 to 48 business hours.
-                </p>
-                <button
-                  onClick={() => { setSubmitted(false); setForm({ name: '', email: '', inquiryType: 'general', subject: '', message: '' }); }}
-                  className="btn btn-outline btn-sm"
-                  style={{ marginTop: '24px' }}
-                >
-                  Send Another Message
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="e.g. Oluwaseun Davies"
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="name@organization.com"
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="inquiryType">Nature of Inquiry *</label>
-                  <select
-                    id="inquiryType"
-                    value={form.inquiryType}
-                    onChange={(e) => setForm({ ...form, inquiryType: e.target.value })}
-                    className="form-select"
-                  >
-                    <option value="general">General Inquiry / Question</option>
-                    <option value="coaching">Executive Personal Growth Coaching Inquiry</option>
-                    <option value="institute">Gain Mastery Institute Support</option>
-                    <option value="bereans">The Bereans Reading Club Inquiries</option>
-                    <option value="partnership">Institutional Partnership</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    placeholder="Brief summary of your inquiry"
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label" htmlFor="message">Message *</label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Provide details regarding your inquiry..."
-                    className="form-textarea"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn btn-gold"
-                  style={{ width: '100%', padding: '15px' }}
-                >
-                  <Send size={15} />
-                  <span>{loading ? 'Transmitting...' : 'Send Inquiry'}</span>
-                </button>
-              </form>
-            )}
+    <div className="contact-page-root">
+      <section className="contact-hero-section">
+        <div className="wrap">
+          <div className="contact-hero-copy">
+            <span className="pill-badge amber">
+              <Sparkles size={12} /> Direct Channels
+            </span>
+            <h1 className="hero-title">
+              Inquiries &amp; <span className="gradient-amber">Direct Communication</span>
+            </h1>
+            <p className="hero-subtitle">
+              Have a question about Gain Mastery Institute courses, The Bereans reading fellowship, or executive growth coaching? Reach out directly.
+            </p>
           </div>
+        </div>
+      </section>
 
-          {/* Right Column: Channels & Coaching Note */}
-          <div>
-            <div className="luxury-card" style={{ padding: '30px', marginBottom: '24px' }}>
-              <h3 style={{ fontSize: '18px', color: 'var(--gold-bright)', marginBottom: '14px' }}>
-                One-on-One Growth Coaching
-              </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: '1.7', marginBottom: '14px' }}>
-                Moses Oladoye accepts a limited number of high-commitment personal coaching engagements each quarter across clarity, purpose, and financial strategy.
-              </p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
-                Inquiries are screened for fit, capacity, and readiness for rigorous accountability. Select &ldquo;Executive Personal Growth Coaching Inquiry&rdquo; in the form to begin.
-              </p>
+      <section className="site-section form-section">
+        <div className="wrap">
+          <div className="contact-bento-grid">
+            {/* Direct Cards Column */}
+            <div className="contact-info-col">
+              <div className="bento-card ci-card">
+                <div className="ci-icon-box">
+                  <Mail size={20} className="icon-amber" />
+                </div>
+                <h4>Official Correspondence</h4>
+                <p>For executive inquiries, speaking invitations, and institutional partnerships:</p>
+                <a href="mailto:contact@themasterydr.com" className="contact-link">
+                  contact@themasterydr.com
+                </a>
+              </div>
+
+              <div className="bento-card ci-card">
+                <div className="ci-icon-box">
+                  <MessageSquare size={20} className="icon-cyan" />
+                </div>
+                <h4>The Mastery Masterminds</h4>
+                <p>Join over 3,000+ growth-oriented builders in our active global Telegram fellowship:</p>
+                <a href="https://t.me/masterymasterminds" target="_blank" rel="noopener noreferrer" className="contact-link cyan">
+                  t.me/masterymasterminds
+                </a>
+              </div>
+
+              <div className="bento-card ci-card">
+                <div className="ci-icon-box">
+                  <MapPin size={20} className="icon-emerald" />
+                </div>
+                <h4>Headquarters</h4>
+                <p>Gain Mastery Institute</p>
+                <span className="contact-meta">Lagos, Nigeria &bull; Serving Global Builders</span>
+              </div>
             </div>
 
-            <div className="luxury-card" style={{ padding: '30px' }}>
-              <h3 style={{ fontSize: '18px', color: 'var(--text-primary)', marginBottom: '16px' }}>
-                Direct Channels
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14px' }}>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)', display: 'block' }}>
-                    OFFICIAL EMAIL
-                  </span>
-                  <a href="mailto:moses@gainmastery.org" style={{ color: 'var(--gold-bright)' }}>
-                    moses@gainmastery.org
-                  </a>
-                </div>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)', display: 'block' }}>
-                    HEADQUARTERS
-                  </span>
-                  <span style={{ color: 'var(--text-secondary)' }}>
-                    Lagos, Nigeria (Global Digital Delivery)
-                  </span>
-                </div>
-                <div>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)', display: 'block' }}>
-                    LOOKING FOR A SPEAKER?
-                  </span>
-                  <Link href="/speaking/invite" style={{ color: 'var(--gold-bright)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    <span>Use our Dedicated Speaking Portal</span>
-                    <ArrowRight size={13} />
-                  </Link>
-                </div>
+            {/* Message Form Column */}
+            <div className="contact-form-col">
+              <div className="bento-card form-card">
+                {submitted ? (
+                  <div className="submitted-box">
+                    <CheckCircle2 size={48} className="icon-emerald" />
+                    <h3>Message Dispatched</h3>
+                    <p>Thank you for reaching out. Your communication has been routed to the appropriate desk. You will receive a response within 24–48 business hours.</p>
+                  </div>
+                ) : (
+                  <>
+                    <h3>Send a Direct Dispatch</h3>
+                    <p className="form-sub">Please specify the exact nature of your inquiry so we can route it efficiently.</p>
+
+                    <form onSubmit={handleSubmit} className="contact-form">
+                      <div className="form-group">
+                        <label className="form-label">Full Name *</label>
+                        <input 
+                          type="text" 
+                          required 
+                          value={fullName}
+                          onChange={e => setFullName(e.target.value)}
+                          placeholder="e.g. Samuel Adeleke"
+                          className="form-input"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Email Address *</label>
+                        <input 
+                          type="email" 
+                          required 
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          placeholder="samuel@domain.com"
+                          className="form-input"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Inquiry Focus</label>
+                        <select 
+                          value={subject}
+                          onChange={e => setSubject(e.target.value)}
+                          className="form-select"
+                        >
+                          <option value="Personal Coaching Inquiry">Personal Growth Coaching</option>
+                          <option value="Institute Courses Support">Gain Mastery Institute / Course Access</option>
+                          <option value="The Bereans Membership">The Bereans Reading Fellowship</option>
+                          <option value="General Strategic Inquiry">General Strategic Inquiries</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label className="form-label">Message *</label>
+                        <textarea 
+                          required 
+                          rows={5}
+                          value={message}
+                          onChange={e => setMessage(e.target.value)}
+                          placeholder="Please provide clear details regarding your inquiry..."
+                          className="form-textarea"
+                        />
+                      </div>
+
+                      <button type="submit" disabled={loading} className="btn btn-primary btn-lg" style={{ width: '100%', marginTop: '8px' }}>
+                        {loading ? 'Transmitting...' : 'Transmit Message'} <Send size={15} />
+                      </button>
+                    </form>
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <style jsx>{`
+        .contact-page-root {
+          width: 100%;
+          padding-bottom: 80px;
+        }
+        .contact-hero-section {
+          padding: 80px 0 60px;
+          border-bottom: 1px solid var(--border-subtle);
+          background: var(--bg-subtle);
+        }
+        .contact-hero-copy {
+          max-width: 720px;
+        }
+        .hero-title {
+          font-size: clamp(34px, 4.2vw, 54px);
+          margin-top: 18px;
+          margin-bottom: 16px;
+        }
+        .hero-subtitle {
+          font-size: 16.5px;
+          color: var(--text-secondary);
+          line-height: 1.7;
+        }
+
+        .contact-bento-grid {
+          display: grid;
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 36px;
+        }
+        .contact-info-col {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .ci-card {
+          padding: 28px;
+        }
+        .ci-icon-box {
+          width: 42px;
+          height: 42px;
+          border-radius: var(--radius-sm);
+          background: rgba(255, 255, 255, 0.04);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 16px;
+        }
+        .ci-card h4 {
+          font-size: 17px;
+          margin-bottom: 6px;
+        }
+        .ci-card p {
+          font-size: 13.5px;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin-bottom: 12px;
+        }
+        .contact-link {
+          font-family: var(--font-mono);
+          font-size: 14px;
+          color: var(--accent-amber-light);
+          font-weight: 600;
+        }
+        .contact-link.cyan {
+          color: var(--accent-cyan);
+        }
+        .contact-meta {
+          font-size: 13px;
+          color: var(--text-muted);
+        }
+
+        /* Form */
+        .form-card {
+          padding: 40px;
+        }
+        .form-card h3 {
+          font-size: 24px;
+          margin-bottom: 6px;
+        }
+        .form-sub {
+          font-size: 14px;
+          color: var(--text-secondary);
+          margin-bottom: 24px;
+        }
+        .contact-form {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .form-label {
+          font-family: var(--font-mono);
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          color: var(--text-muted);
+        }
+        .form-input, .form-select, .form-textarea {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid var(--border-glass);
+          border-radius: var(--radius-sm);
+          padding: 12px 14px;
+          font-family: var(--font-sans);
+          font-size: 14px;
+          color: var(--text-primary);
+          outline: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+          border-color: var(--accent-amber);
+        }
+        .submitted-box {
+          text-align: center;
+          padding: 48px 0;
+        }
+        .icon-emerald {
+          color: var(--accent-emerald);
+          margin-bottom: 16px;
+        }
+        .submitted-box h3 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+        .submitted-box p {
+          font-size: 15px;
+          color: var(--text-secondary);
+          line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+          .contact-bento-grid {
+            grid-template-columns: 1fr;
+          }
+          .form-card {
+            padding: 28px 20px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

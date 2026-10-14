@@ -1,298 +1,205 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import {
-  BookOpen,
-  Award,
-  Clock,
-  CheckCircle2,
-  PlayCircle,
-  FileText,
-  User,
-  MessageSquare,
-  ArrowRight,
-  ShieldCheck,
-  Star
-} from 'lucide-react';
-import { SEED_COURSES } from '@/lib/data/seed-data';
+import { BookOpen, Award, CheckCircle2, Clock, ArrowRight, Shield, User } from 'lucide-react';
 
-export default function StudentDashboardPage() {
-  const [activeTab, setActiveTab] = useState<'courses' | 'assignments' | 'certificates' | 'profile'>('courses');
+export default function DashboardPage() {
+  const [user, setUser] = useState<{ fullName: string; email: string } | null>(null);
 
-  const enrolledCourses = [
-    {
-      ...SEED_COURSES[0],
-      progressPercent: 65,
-      completedLessons: 10,
-      totalLessons: 16,
-      currentLessonSlug: 'purpose-dimension',
-      lastAccessed: 'Yesterday, 8:45 PM',
-    },
-    {
-      ...SEED_COURSES[1],
-      progressPercent: 25,
-      completedLessons: 3,
-      totalLessons: 12,
-      currentLessonSlug: 'capital-preservation',
-      lastAccessed: '3 days ago',
-    },
-  ];
-
-  const pendingAssignments = [
-    {
-      id: 'asg-1',
-      courseTitle: 'The Architecture of Intentional Growth',
-      title: 'The Personal Growth 6-Pillar Alignment Blueprint',
-      status: 'Graded (95/100)',
-      feedback: 'Exceptional self-diagnosis. Your strategy for morning friction reduction is clear and executable. Well done.',
-      submittedDate: 'Sep 12, 2026',
-    },
-    {
-      id: 'asg-2',
-      courseTitle: 'Financial Intelligence & Strategic Market Discipline',
-      title: 'Capital Preservation & Risk Allocation Case Study',
-      status: 'Pending Instructor Review',
-      feedback: null,
-      submittedDate: 'Sep 16, 2026',
-    },
-  ];
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data?.user) {
+          setUser({
+            fullName: data.user.profile?.full_name || 'Member',
+            email: data.user.email,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-primary)', padding: '50px 0 100px' }}>
+    <div className="dashboard-page-root">
       <div className="wrap">
-        {/* Welcome Header */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          flexWrap: 'wrap',
-          gap: '20px',
-          marginBottom: '40px',
-          paddingBottom: '28px',
-          borderBottom: '1px solid var(--line-dark)'
-        }}>
-          <div>
-            <span className="badge badge-gold" style={{ marginBottom: '10px' }}>Student Portal</span>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 42px)', margin: '8px 0' }}>
-              Welcome back, <em>Emmanuel</em>
-            </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '15px' }}>
-              Track your course progression, review assignment evaluations, and earn verified certificates.
-            </p>
+        <div className="dashboard-welcome-banner">
+          <div className="dw-copy">
+            <span className="pill-badge emerald">
+              <CheckCircle2 size={12} /> Student Learning Portal
+            </span>
+            <h2>Welcome back, {user ? user.fullName : 'Builder'}.</h2>
+            <p>Track your curriculum progress across Gain Mastery Institute and access your deliberations.</p>
+          </div>
+          <Link href="/courses" className="btn btn-primary btn-pill">
+            <span>Explore New Courses</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Bento Stats */}
+        <div className="dashboard-bento-grid">
+          <div className="bento-card db-stat-card">
+            <span className="db-sub">ENROLLED PROGRAMS</span>
+            <h3>2 Tracks Active</h3>
+            <p>Foundations of Personal Mastery &bull; Six Dimensions</p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <Link href="/institute" className="btn btn-outline btn-sm">
-              <span>Browse Marketplace</span>
-            </Link>
+          <div className="bento-card db-stat-card">
+            <span className="db-sub">COMPLETION PROGRESS</span>
+            <h3>64% Average</h3>
+            <p>12 of 18 lessons completed</p>
+          </div>
+
+          <div className="bento-card db-stat-card">
+            <span className="db-sub">THE BEREANS STATUS</span>
+            <h3 style={{ color: 'var(--accent-emerald)' }}>Active Fellow</h3>
+            <p>Current: Atomic Habits (Ch. 4 Deliberation)</p>
           </div>
         </div>
 
-        {/* Dashboard Navigation Tabs */}
-        <div style={{
-          display: 'flex',
-          gap: '12px',
-          borderBottom: '1px solid var(--line-dark)',
-          marginBottom: '36px',
-          overflowX: 'auto',
-          paddingBottom: '1px'
-        }}>
-          {[
-            { id: 'courses', label: 'My Courses', icon: BookOpen },
-            { id: 'assignments', label: 'Assignments & Evaluations', icon: FileText },
-            { id: 'certificates', label: 'Earned Certificates', icon: Award },
-            { id: 'profile', label: 'Profile Settings', icon: User },
-          ].map(tab => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  borderBottom: isActive ? '2px solid var(--gold-primary)' : '2px solid transparent',
-                  padding: '12px 18px',
-                  color: isActive ? 'var(--gold-bright)' : 'var(--text-muted)',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '12px',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  cursor: 'pointer',
-                  transition: 'var(--transition)'
-                }}
-              >
-                <Icon size={15} />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
+        {/* Active Courses */}
+        <div className="dashboard-section">
+          <h3>Your Active Curriculums</h3>
+          <div className="active-courses-list">
+            <div className="bento-card active-course-item">
+              <div className="aci-left">
+                <span className="pill-badge amber">Core Track</span>
+                <h4>Foundations of Personal Mastery</h4>
+                <p>Purpose, Habits &amp; Daily Disciplines &bull; 8 of 10 Modules Completed</p>
+                <div className="progress-bar-wrap">
+                  <div className="progress-bar-fill" style={{ width: '80%' }} />
+                </div>
+              </div>
+              <Link href="/courses/foundations-of-personal-mastery" className="btn btn-secondary btn-sm btn-pill">
+                Resume Course <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            <div className="bento-card active-course-item">
+              <div className="aci-left">
+                <span className="pill-badge indigo">Executive Track</span>
+                <h4>Six Dimensions of Strategic Growth</h4>
+                <p>Spiritual, Financial &amp; Leadership Mastery &bull; 4 of 8 Modules Completed</p>
+                <div className="progress-bar-wrap">
+                  <div className="progress-bar-fill" style={{ width: '50%' }} />
+                </div>
+              </div>
+              <Link href="/courses/six-dimensions-strategic-growth" className="btn btn-secondary btn-sm btn-pill">
+                Resume Course <ArrowRight size={13} />
+              </Link>
+            </div>
+          </div>
         </div>
-
-        {/* Tab 1: Enrolled Courses */}
-        {activeTab === 'courses' && (
-          <div>
-            <h2 style={{ fontSize: '20px', marginBottom: '24px', color: 'var(--text-primary)' }}>
-              Active Learning Programs ({enrolledCourses.length})
-            </h2>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-              gap: '30px'
-            }}>
-              {enrolledCourses.map(course => (
-                <div key={course.id} className="luxury-card" style={{ padding: 0, overflow: 'hidden' }}>
-                  <div style={{ position: 'relative', height: '180px', width: '100%' }}>
-                    <Image
-                      src={course.thumbnailUrl}
-                      alt={course.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                    />
-                    <div style={{ position: 'absolute', top: '12px', left: '12px', zIndex: 2 }}>
-                      <span className="badge badge-gold">{course.category}</span>
-                    </div>
-                  </div>
-
-                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <h3 style={{ fontSize: '18px', lineHeight: '1.3', marginBottom: '12px' }}>
-                      {course.title}
-                    </h3>
-
-                    {/* Progress Bar */}
-                    <div style={{ marginBottom: '16px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginBottom: '6px' }}>
-                        <span>Progress: {course.progressPercent}%</span>
-                        <span>{course.completedLessons}/{course.totalLessons} Lessons</span>
-                      </div>
-                      <div style={{ width: '100%', height: '6px', background: 'var(--bg-secondary)', borderRadius: '3px', overflow: 'hidden' }}>
-                        <div style={{ width: `${course.progressPercent}%`, height: '100%', background: 'var(--gold-primary)', transition: 'width 0.4s ease' }}></div>
-                      </div>
-                    </div>
-
-                    <div style={{
-                      marginTop: 'auto',
-                      paddingTop: '16px',
-                      borderTop: '1px solid var(--line-dark)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between'
-                    }}>
-                      <span style={{ fontSize: '11.5px', color: 'var(--text-muted)' }}>
-                        Last: {course.lastAccessed}
-                      </span>
-                      <Link href={`/dashboard/course/${course.slug}`} className="btn btn-gold btn-sm">
-                        <PlayCircle size={13} />
-                        <span>Continue</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Tab 2: Assignments */}
-        {activeTab === 'assignments' && (
-          <div style={{ maxWidth: '800px' }}>
-            <h2 style={{ fontSize: '20px', marginBottom: '24px', color: 'var(--text-primary)' }}>
-              Assignment Submissions &amp; Evaluations
-            </h2>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {pendingAssignments.map(asg => (
-                <div key={asg.id} className="luxury-card" style={{ padding: '24px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '8px' }}>
-                    <h3 style={{ fontSize: '17px', color: 'var(--text-primary)' }}>{asg.title}</h3>
-                    <span className={`badge ${asg.feedback ? 'badge-emerald' : 'badge-gold'}`}>
-                      {asg.status}
-                    </span>
-                  </div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--text-muted)', marginBottom: '14px' }}>
-                    {asg.courseTitle} · Submitted: {asg.submittedDate}
-                  </div>
-
-                  {asg.feedback && (
-                    <div style={{
-                      background: 'var(--bg-secondary)',
-                      borderLeft: '2px solid #74C69D',
-                      padding: '12px 16px',
-                      fontSize: '13.5px',
-                      color: 'var(--text-secondary)'
-                    }}>
-                      <strong style={{ color: '#74C69D', display: 'block', fontSize: '11px', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', marginBottom: '4px' }}>
-                        Instructor Feedback (Moses Oladoye):
-                      </strong>
-                      {asg.feedback}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Tab 3: Certificates */}
-        {activeTab === 'certificates' && (
-          <div style={{ maxWidth: '800px' }}>
-            <h2 style={{ fontSize: '20px', marginBottom: '24px', color: 'var(--text-primary)' }}>
-              Verified Gain Mastery Certificates
-            </h2>
-
-            <div className="luxury-card" style={{ padding: '30px', border: '1px solid var(--gold-border)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-                <div>
-                  <span className="badge badge-gold" style={{ marginBottom: '10px' }}>Certified Masterclass</span>
-                  <h3 style={{ fontSize: '20px', marginBottom: '6px' }}>The Architecture of Intentional Growth</h3>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-muted)' }}>
-                    CREDENTIAL ID: <span style={{ color: 'var(--gold-bright)' }}>TMD-CERT-98213</span> · Issued: Sep 14, 2026
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <Link href="/verify/certificate/tmd-cert-98213" target="_blank" className="btn btn-outline btn-sm">
-                    <span>Public Verification</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 4: Profile Settings */}
-        {activeTab === 'profile' && (
-          <div style={{ maxWidth: '640px' }}>
-            <div className="luxury-card" style={{ padding: '36px' }}>
-              <h2 style={{ fontSize: '20px', color: 'var(--gold-bright)', marginBottom: '24px' }}>
-                Profile &amp; Account Settings
-              </h2>
-              <div className="form-group">
-                <label className="form-label">Full Name</label>
-                <input type="text" defaultValue="Emmanuel O. Adeleke" className="form-input" />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Email Address</label>
-                <input type="email" defaultValue="emmanuel@gmail.com" disabled className="form-input" style={{ opacity: 0.7 }} />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Country of Residence</label>
-                <input type="text" defaultValue="Nigeria" className="form-input" />
-              </div>
-              <button className="btn btn-gold btn-sm" style={{ marginTop: '10px' }}>
-                Update Profile
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      <style jsx>{`
+        .dashboard-page-root {
+          padding: 60px 0 100px;
+        }
+        .dashboard-welcome-banner {
+          background: var(--bg-card);
+          border: 1px solid var(--border-glass);
+          border-radius: var(--radius-xl);
+          padding: 40px 48px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 24px;
+          margin-bottom: 36px;
+        }
+        .dw-copy h2 {
+          font-size: clamp(26px, 3.2vw, 38px);
+          margin-top: 12px;
+          margin-bottom: 8px;
+        }
+        .dw-copy p {
+          font-size: 15px;
+          color: var(--text-secondary);
+        }
+
+        .dashboard-bento-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-bottom: 48px;
+        }
+        .db-stat-card {
+          padding: 28px;
+        }
+        .db-sub {
+          font-family: var(--font-mono);
+          font-size: 10.5px;
+          color: var(--text-muted);
+          letter-spacing: 0.08em;
+          display: block;
+          margin-bottom: 8px;
+        }
+        .db-stat-card h3 {
+          font-size: 24px;
+          margin-bottom: 6px;
+        }
+        .db-stat-card p {
+          font-size: 13px;
+          color: var(--text-secondary);
+        }
+
+        .dashboard-section h3 {
+          font-size: 22px;
+          margin-bottom: 20px;
+        }
+        .active-courses-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .active-course-item {
+          padding: 28px 32px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .aci-left {
+          flex: 1;
+          min-width: 280px;
+        }
+        .aci-left h4 {
+          font-size: 18px;
+          margin-top: 10px;
+          margin-bottom: 4px;
+        }
+        .aci-left p {
+          font-size: 13.5px;
+          color: var(--text-secondary);
+          margin-bottom: 12px;
+        }
+        .progress-bar-wrap {
+          width: 100%;
+          max-width: 380px;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: var(--radius-full);
+          overflow: hidden;
+        }
+        .progress-bar-fill {
+          height: 100%;
+          background: linear-gradient(90deg, var(--accent-amber), var(--accent-emerald));
+          border-radius: var(--radius-full);
+        }
+
+        @media (max-width: 900px) {
+          .dashboard-bento-grid {
+            grid-template-columns: 1fr;
+          }
+          .dashboard-welcome-banner {
+            padding: 28px 20px;
+          }
+        }
+      `}</style>
     </div>
   );
 }
